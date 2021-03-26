@@ -13,6 +13,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            // all
+            LoaderSeeder::class,
+            NavbarSeeder::class,
+            FooterSeeder::class,
+            // blade welcome
+            CarrouselSeeder::class,
+            LogoSeeder::class,
+            CardwelcomeSeeder::class,
+            TitreswelcomeSeeder::class,
+            AboutwelcomeSeeder::class,
+            TestimonialsSeeder::class,
+            ServiceswelcomeSeeder::class,
+            TeamSeeder::class,
+            ReadySeeder::class,
+
+            // blade blog
+
+
+            // blade services
+
+
+            // blade contact
+        ]);
     }
 }
