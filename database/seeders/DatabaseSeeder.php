@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,12 @@ class DatabaseSeeder extends Seeder
             LoaderSeeder::class,
             NavbarSeeder::class,
             FooterSeeder::class,
+            NewsletterSeeder::class,
+            // contact
+            AddressSeeder::class,
+            PhoneSeeder::class,
+            EmailSeeder::class,
+            ContactsectionSeeder::class,
             // blade welcome
             CarrouselSeeder::class,
             LogoSeeder::class,
@@ -25,17 +32,22 @@ class DatabaseSeeder extends Seeder
             TitreswelcomeSeeder::class,
             AboutwelcomeSeeder::class,
             TestimonialsSeeder::class,
-            ServiceswelcomeSeeder::class,
             TeamSeeder::class,
+            CEOSeeder::class,
             ReadySeeder::class,
 
             // blade blog
 
 
             // blade services
+            TitresserviceSeeder::class,
+            IntroserviceSeeder::class,
+            ServiceSeeder::class,
 
 
             // blade contact
+            IntrocontactSeeder::class,
+            MapSeeder::class,
         ]);
     }
 }

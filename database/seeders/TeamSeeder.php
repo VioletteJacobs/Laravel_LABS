@@ -22,12 +22,6 @@ class TeamSeeder extends Seeder
                 "fonction" => "HappyNess Manager",
             ],
             [
-                "photo" => "img/team/2.jpg",
-                "name" => "Jacques",
-                "firstname" => "Clara",
-                "fonction" => "CEO",
-            ],
-            [
                 "photo" => "img/team/3.jpg",
                 "name" => "Broder",
                 "firstname" => "Pauline",

@@ -5,7 +5,10 @@
             <h2>{{$titrewelcome[2]->title}}</h2>
         </div>
         <div class="row">
-            @foreach ($servicewelcome as $item)
+            {{-- iteration for de random of 9 --}}
+            <?php $i=0; ?>
+            @foreach ($services->shuffle() as $item)
+            @if ($i<9)
             <!-- single service -->
             <div class="col-md-4 col-sm-6">
                 <div class="service">
@@ -18,7 +21,12 @@
                     </div>
                 </div>
             </div>
-                
+            <?php $i++; ?>
+            @endif
+            @if ($loop -> iteration%3==0)
+            </div>
+            <div class="row">
+            @endif
             @endforeach
         </div>
         <div class="text-center">

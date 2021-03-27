@@ -6,4 +6,5 @@
     @include('partials.front.welcome.services')
     @include('partials.front.welcome.team')
     @include('partials.front.welcome.promotion')
+    @include("partials.front.all.contact")
 @endsection

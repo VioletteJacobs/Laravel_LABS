@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Serviceswelcome;
+use App\Models\Ceo;
 use Illuminate\Http\Request;
 
-class ServiceswelcomeController extends Controller
+class CeoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ServiceswelcomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Serviceswelcome  $serviceswelcome
+     * @param  \App\Models\Ceo  $ceo
      * @return \Illuminate\Http\Response
      */
-    public function show(Serviceswelcome $serviceswelcome)
+    public function show(Ceo $ceo)
     {
         //
     }
@@ -52,10 +52,10 @@ class ServiceswelcomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Serviceswelcome  $serviceswelcome
+     * @param  \App\Models\Ceo  $ceo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Serviceswelcome $serviceswelcome)
+    public function edit(Ceo $ceo)
     {
         //
     }
@@ -64,10 +64,10 @@ class ServiceswelcomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Serviceswelcome  $serviceswelcome
+     * @param  \App\Models\Ceo  $ceo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Serviceswelcome $serviceswelcome)
+    public function update(Request $request, Ceo $ceo)
     {
         //
     }
@@ -75,10 +75,10 @@ class ServiceswelcomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Serviceswelcome  $serviceswelcome
+     * @param  \App\Models\Ceo  $ceo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Serviceswelcome $serviceswelcome)
+    public function destroy(Ceo $ceo)
     {
         //
     }

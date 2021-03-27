@@ -5,13 +5,22 @@
             <!-- contact info -->
             <div class="col-md-5 col-md-offset-1 contact-info col-push">
                 <div class="section-title left">
-                    <h2>Contact us</h2>
+                    <h2>{{$contactSection[0]->title}}</h2>
                 </div>
-                <p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum. </p>
-                <h3 class="mt60">Main Office</h3>
-                <p class="con-item">C/ Libertad, 34 <br> 05200 Arévalo </p>
-                <p class="con-item">0034 37483 2445 322</p>
-                <p class="con-item">hello@company.com</p>
+                <p>{{$contactSection[0]->p}}</p>
+                <h3 class="mt60">{{$contactSection[0]->title2}}</h3>
+                @foreach ($address as $item)
+                <p class="con-item">{{$item->address}}</p>
+                @endforeach
+
+                @foreach ($phone as $item)
+                <p class="con-item">{{$item->phone}}</p> 
+                @endforeach
+
+                @foreach ($email as $item)
+                <p class="con-item">{{$item->email}}</p> 
+                @endforeach
+                
             </div>
             <!-- contact form -->
             <div class="col-md-6 col-pull">

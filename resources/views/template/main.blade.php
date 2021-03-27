@@ -31,7 +31,6 @@
 	@include('partials.front.all.loader')
     @include('partials.front.all.navbar')
     @yield('content')
-    @include("partials.front.all.contact")
     @include('partials.front.all.footer')
 
 

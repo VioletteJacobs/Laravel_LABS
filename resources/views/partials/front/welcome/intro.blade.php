@@ -1,6 +1,9 @@
 <!-- Intro Section -->
 <div class="hero-section">
     <div class="hero-content">
+        @foreach ($carrousel as $item)
+            
+        @endforeach
         <div class="hero-center">
             <img src="img/big-logo.png" alt="">
             <p>Get your freebie template now!</p>
