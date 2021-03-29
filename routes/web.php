@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
@@ -8,6 +9,7 @@ use App\Models\Ceo;
 use App\Models\Contactsection;
 use App\Models\Email;
 use App\Models\Footer;
+use App\Models\Introblog;
 use App\Models\Introservice;
 use App\Models\Loader;
 use App\Models\logo;
@@ -96,9 +98,11 @@ Route::get('/blog', function () {
     $loader = Loader::all();
     $nav = Navbar::all();
 
+    $intro = Introblog::all();
+
     $newsletter = Newsletter::all();
     $footer = Footer::all();
-    return view('pages.front.blog', compact("loader", "nav", "newsletter","footer"));
+    return view('pages.front.blog', compact("loader", "nav", "intro","newsletter","footer"));
 });
 
 
@@ -124,3 +128,38 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::get('/welcomeB', function () {
+
+    $loader = Loader::all();
+    $nav = Navbar::all();
+    $carrousel = Carrousel::all();
+    $cardwelcome = Cardwelcome::all();
+    $carrousel = Carrousel::all();
+    $logo = logo::all();
+    $titrewelcome = Titreswelcome::all();
+    $services = Service::all();
+
+    $carrousel = Carrousel::all();
+    $about = Aboutwelcome::all();
+
+    $team = Team::all();
+    $Ceo = Ceo::all();
+    $teamRight = $team->shuffle();
+    $teamLeft =$team->shuffle();
+
+    $testimonials = Testimonials::all();
+    $ready = Ready::all();
+
+    $contactSection = Contactsection::all();
+    $address = Address::all();
+    $phone = Phone::all();
+    $email = Email::all();
+
+    $footer = Footer::all();
+
+
+    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "ready", "contactSection", "address", "phone", "email", "footer"));
+});
+
+Route::post("/newsletter", [NewsletterController::class, "store"]);

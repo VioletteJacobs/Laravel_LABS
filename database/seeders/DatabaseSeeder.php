@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             ReadySeeder::class,
 
             // blade blog
+            IntroblogSeeder::class,
 
 
             // blade services

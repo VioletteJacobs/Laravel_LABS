@@ -238,7 +238,7 @@ return [
         ],
         [
             'text'        => 'Accueil',
-            'url'         => '/',
+            'url'         => '/welcomeB',
             'icon'        => 'fas fa-flask',
             'label'       => null,
             'label_color' => 'success',
@@ -246,17 +246,17 @@ return [
         ['header' => 'Modifier vos pages :'],
         [
             'text' => 'Accueil',
-            'url'  => '/',
+            'url'  => '/welcomeB',
             'icon' => 'fas fa-tools',
         ],
         [
             'text' => 'Services',
-            'url'  => '/service',
+            'url'  => '/serviceB',
             'icon' => 'fas fa-tools',
         ],
         [
             'text' => 'Blog',
-            'url'  => '/blog',
+            'url'  => '/blogB',
             'icon' => 'fas fa-tools',
         ],
         [
