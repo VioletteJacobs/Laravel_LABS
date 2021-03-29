@@ -1,7 +1,7 @@
 @extends('template.back.templateBack')
 @section('content')
 <div class="container m-5">
-  <section class="mt-5">
+{{-- <section class="mt-5">
     <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le Carrousel: </h1>
     <table class="table">
         <thead>
@@ -9,7 +9,7 @@
             <th scope="col">Commentaire </th>
             <th scope="col">Nom </th>
             <th scope="col">Prénom</th>
-            {{-- <th scope="col">Image de la vidéo</th> --}}
+
             <th scope="col">Fonction</th>
             <th scope="col">Edit</th>
           </tr>
@@ -20,7 +20,6 @@
               <td>{{$item->p}}</td>
               <td>{{$item->name}}</td>
               <td>{{$item->firstname}}</td>
-              {{-- <td>{{$item->img}}</td> --}}
               <td>{{$item->fonction}}</td>
               <td>
                 <a href="/testimonial/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
@@ -29,7 +28,7 @@
             @endforeach
         </tbody>
     </table>
-  </section>
+  </section>  --}}
     <section class="mt-5" >
         <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les 3 Cards welcome : </h1>
         <table class="table">
@@ -98,6 +97,7 @@
           {{-- <th scope="col">Image de la vidéo</th> --}}
           <th scope="col">Fonction</th>
           <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -111,10 +111,18 @@
             <td>
               <a href="/testimonial/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
             </td>
+            <td>
+              <form action="/testimonial/{{$item->id}}" method="POST">
+                @csrf
+                @method("DELETE")
+                <button type="submit" class="btn" style="background-color : #DB6778">Delete</button>
+              </form>
+            </td>
           </tr>
           @endforeach
       </tbody>
   </table>
+  <a href="/testimonial/create" style="background-color: rgb(44, 230, 171)">Ajouter un témoignage</a>
 </section>
 
 <section class="mt-5">
@@ -126,6 +134,7 @@
           <th scope="col">Icon </th>
           <th scope="col">Paragraphe</th>
           <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -137,10 +146,18 @@
             <td>
               <a href="/service/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
             </td>
+            <td>
+              <form action="/service/{{$item->id}}" method="POST">
+                @csrf
+                @method("DELETE")
+                <button type="submit" class="btn" style="background-color : #DB6778">Delete</button>
+              </form>
+            </td>
           </tr>
           @endforeach
       </tbody>
   </table>
+  <a href="/service/create" style="background-color: rgb(44, 230, 171)">Ajouter un service</a>
 </section>
 
 <section class="mt-5">
@@ -153,6 +170,7 @@
           <th scope="col">Prénom</th>
           <th scope="col">Fonction</th>
           <th scope="col">Edit</th>
+          <th scope="col">Supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -165,10 +183,19 @@
             <td>
               <a href="/team/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
             </td>
+            <td>
+              <form action="/team/{{$item->id}}" method="POST">
+                @csrf
+                @method("DELETE")
+                <button type="submit" class="btn" style="background-color : #DB6778">Delete</button>
+              </form>
+            </td>
           </tr>
+
           @endforeach
       </tbody>
   </table>
+  <a href="/team/create" style="background-color: rgb(44, 230, 171)">Ajouter une membre à l'équipe</a>
 </section>
 
 <section class="mt-5">

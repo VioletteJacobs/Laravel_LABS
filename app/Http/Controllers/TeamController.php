@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,7 +24,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.welcome.createTeam");
     }
 
     /**
@@ -35,7 +35,22 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+		    // "photo" => 'required |min:2|max:300',
+            "name" => 'required|min:2|max:50',
+            "firstname" => 'required|min:2|max:50',
+            "fonction" => 'required|min:2|max:50',
+
+        ]);
+        $update = new Team;
+        $update->photo = $request->photo;
+        $update->name = $request->name;
+        $update->firstname = $request->firstname;
+        $update->fonction = $request->fonction;
+
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**
@@ -96,6 +111,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect("/welcomeB");
     }
 }

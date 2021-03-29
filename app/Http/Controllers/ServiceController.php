@@ -24,7 +24,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.welcome.createService");
     }
 
     /**
@@ -35,7 +35,21 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+		    "icon" => 'required |min:2|max:100',
+            "title" => 'required|min:2|max:100',
+            "p" => 'required|min:2|max:500',
+
+        ]);
+
+        $update = new Service;;
+        $update->icon = $request->icon;
+        $update->title = $request->title;
+        $update->p = $request->p;
+
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**
@@ -94,6 +108,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return redirect("/welcomeB");
     }
 }

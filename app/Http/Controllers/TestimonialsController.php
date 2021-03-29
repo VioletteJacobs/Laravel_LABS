@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialsController extends Controller
 {
@@ -24,7 +25,7 @@ class TestimonialsController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.welcome.createTestimonial");
     }
 
     /**
@@ -35,7 +36,24 @@ class TestimonialsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+		    "p" => 'required |min:1',
+            "name" => 'required|min:1|max:200',
+            "firstname" => 'required|min:1|max:200',
+            "fonction" => 'required|min:1|max:200',
+        ]);
+        
+        $newEntry = new Testimonials;
+        $newEntry->p = $request->p;
+        $newEntry->name = $request->name;
+        Storage::put("public.img/", $request->file("photo"));
+        $newEntry->photo = $request->file("photo")->hashName();
+        $newEntry->firstname = $request->firstname;
+        $newEntry->fonction = $request->fonction;
+
+        $newEntry->save();
+        return redirect("/welcomeB");
+
     }
 
     /**
@@ -93,8 +111,13 @@ class TestimonialsController extends Controller
      * @param  \App\Models\Testimonials  $testimonials
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimonials $testimonials)
+    public function destroy($id)
     {
-        //
+        $destroy = Testimonials::find($id);
+        
+        // Storage::delete("public/img/".$destroy->photo);
+        $destroy->delete();
+
+        return redirect("/welcomeB");
     }
 }
