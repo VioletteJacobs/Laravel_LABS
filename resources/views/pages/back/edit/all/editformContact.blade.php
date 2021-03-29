@@ -13,24 +13,24 @@
             @endif
     
     
-        <form action="/ceo/{{$edit->id}}" method="POST">
+        <form action="/aboutwelcome/{{$edit->id}}" method="POST">
             @csrf
             @method("PATCH")
             <div class="from-group">
-                <label for="">Photo : </label>
-                <input type="text" name="para_right" value="{{old("photo")? old("photo") : $edit->photo}}">
+                <label for="">Paramètre droit : </label>
+                <input type="text" name="para_right" value="{{old("para_right")? old("para_right") : $edit->para_right}}">
             </div>
             <div class="from-group">
-                <label for=""> Name: </label>
-                <input type="text" name="name" value="{{old("name")? old("name") : $edit->name}}">
+                <label for=""> Paramètre gauche: </label>
+                <input type="text" name="para_left" value="{{old("para_left")? old("para_left") : $edit->para_left}}">
             </div>
             <div class="from-group">
-                <label for="">Firstname: </label>
-                <input type="text" name="firstname" value="{{old("firstname")? old("firstname") : $edit->firstname}}">
+                <label for="">Contenu du Bouton : </label>
+                <input type="text" name="btn_content" value="{{old("btn_content")? old("btn_content") : $edit->btn_content}}">
             </div>
             <div class="from-group">
-                <label for="">Fonction : </label>
-                <input type="text" name="fonction" value="{{old("fonction")? old("fonction") : $edit->fonction}}">
+                <label for="">Lien de la vidéo : </label>
+                <input type="text" name="video_href" value="{{old("video_href")? old("video_href") : $edit->video_href}}">
             </div>
             <button type="submit" class="btn btn-warning">Update</button>
         </form>

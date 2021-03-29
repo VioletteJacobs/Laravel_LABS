@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}"/>
 	<link rel="stylesheet" href="{{asset('css/style.css')}}"/>
 </head>
-<body>
+<body style="background-color: #ECD5E3">
     {{-- <header class="header-section">
         <div class="logo">
             <img src="img/logo.png" alt=""><!-- Logo -->

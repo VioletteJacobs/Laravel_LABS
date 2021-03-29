@@ -57,7 +57,8 @@ class ReadyController extends Controller
      */
     public function edit(Ready $ready)
     {
-        //
+        $edit = $ready;
+        return view("pages.back.edit.welcome.editReady", compact("edit"));
     }
 
     /**
@@ -69,7 +70,22 @@ class ReadyController extends Controller
      */
     public function update(Request $request, Ready $ready)
     {
-        //
+        $validation = $request->validate([
+            "btn_content" => 'required |min:2',
+            "btn_href" => 'required |min:2|max:100',
+            "title" => 'required|min:2|max:200',
+            "p" => 'required|min:2',
+
+        ]);
+        $update = $ready;
+        $update->btn_content = $request->btn_content;
+        $update->btn_href = $request->btn_href;
+        $update->title = $request->title;
+        $update->p = $request->p;
+
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**

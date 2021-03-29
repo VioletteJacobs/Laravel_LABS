@@ -57,7 +57,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        $edit = $service;
+        return view("pages.back.edit.welcome.editService", compact("edit"));
     }
 
     /**
@@ -69,7 +70,20 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $validation = $request->validate([
+		    "icon" => 'required |min:2|max:100',
+            "title" => 'required|min:2|max:100',
+            "p" => 'required|min:2|max:500',
+
+        ]);
+        $update = $service;
+        $update->icon = $request->icon;
+        $update->title = $request->title;
+        $update->p = $request->p;
+
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**

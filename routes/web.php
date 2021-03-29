@@ -1,8 +1,18 @@
 <?php
 
 use App\Http\Controllers\AboutwelcomeController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CardwelcomeController;
+use App\Http\Controllers\CarrouselController;
+use App\Http\Controllers\CeoController;
+use App\Http\Controllers\ContactsectionController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\LogoController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PhoneController;
+use App\Http\Controllers\ReadyController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialsController;
 use App\Models\Aboutwelcome;
 use App\Models\Address;
@@ -81,6 +91,7 @@ Route::get('/services', function () {
     
     $loader = Loader::all();
     $nav = Navbar::all();
+    $logo = logo::all();
 
     $introService = Introservice::all();
     $titresService =Titresservice::all();
@@ -93,25 +104,27 @@ Route::get('/services', function () {
 
     $newsletter = Newsletter::all();
     $footer = Footer::all();
-    return view('pages.front.services', compact("loader", "nav",  "introService", "titresService", "services","footer" , "contactSection", "address", "phone", "email","newsletter", "footer"));
+    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "services","footer" , "contactSection", "address", "phone", "email","newsletter", "footer"));
 });
 
 
 Route::get('/blog', function () {
     $loader = Loader::all();
     $nav = Navbar::all();
+    $logo = logo::all();
 
     $intro = Introblog::all();
 
     $newsletter = Newsletter::all();
     $footer = Footer::all();
-    return view('pages.front.blog', compact("loader", "nav", "intro","newsletter","footer"));
+    return view('pages.front.blog', compact("loader", "nav", "logo","intro","newsletter","footer"));
 });
 
 
 Route::get('/contact', function () {
     $loader = Loader::all();
     $nav = Navbar::all();
+    $logo = logo::all();
 
     $contactSection = Contactsection::all();
     $address = Address::all();
@@ -121,7 +134,7 @@ Route::get('/contact', function () {
     $map = Map::all();
 
     $footer = Footer::all();
-    return view('pages.front.contact', compact("loader", "nav", "footer" , "contactSection", "address", "phone", "email", "map", "footer"));
+    return view('pages.front.contact', compact("loader", "nav", "logo", "footer" , "contactSection", "address", "phone", "email", "map", "footer"));
 });
 
 
@@ -170,3 +183,15 @@ Route::post("/newsletter", [NewsletterController::class, "store"]);
 Route::resource('cardWelcome', CardwelcomeController::class);
 Route::resource("aboutwelcome", AboutwelcomeController::class);
 Route::resource("testimonial", TestimonialsController::class);
+Route::resource("logo", LogoController::class);
+Route::resource("carrousel", CarrouselController::class);
+Route::resource("team", TeamController::class);
+Route::resource('ceo', CeoController::class);
+
+Route::resource('ready', ReadyController::class);
+Route::resource("address", AddressController::class);
+Route::resource("phone", PhoneController::class);
+Route::resource('email', EmailController::class);
+Route::resource("contact", ContactsectionController::class);
+
+Route::resource("service", ServiceController::class);

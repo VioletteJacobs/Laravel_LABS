@@ -13,14 +13,13 @@
             @endif
     
     
-        <form action="/logo/{{$edit->id}}" method="POST">
+        <form action="/aboutwelcome/{{$edit->id}}" method="POST">
             @csrf
             @method("PATCH")
             <div class="from-group">
-                <label for="">Logo :  </label>
-                <input type="file" name="url" value="{{old("url")? old("url") : $edit->url}}">
+                <label for="">Paramètre droit : </label>
+                <input type="text" name="para_right" value="{{old("para_right")? old("para_right") : $edit->para_right}}">
             </div>
-
             <button type="submit" class="btn btn-warning">Update</button>
         </form>
     

@@ -17,7 +17,7 @@ class CreateCeosTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("firstname");
-            $table->string("photo");
+            $table->string("photo")->nullable();
             $table->string("fonction");
             $table->timestamps();
         });

@@ -57,7 +57,8 @@ class CeoController extends Controller
      */
     public function edit(Ceo $ceo)
     {
-        //
+        $edit = $ceo;
+        return view("pages.back.edit.welcome.editCeo", compact("edit"));
     }
 
     /**
@@ -69,7 +70,22 @@ class CeoController extends Controller
      */
     public function update(Request $request, Ceo $ceo)
     {
-        //
+        $validation = $request->validate([
+		    // "photo" => 'required |min:2|max:300',
+            "name" => 'required|min:2|max:50',
+            "firstname" => 'required|min:2|max:50',
+            "fonction" => 'required|min:2|max:50',
+
+        ]);
+        $update = $ceo;
+        $update->photo = $request->photo;
+        $update->name = $request->name;
+        $update->firstname = $request->firstname;
+        $update->fonction = $request->fonction;
+
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**

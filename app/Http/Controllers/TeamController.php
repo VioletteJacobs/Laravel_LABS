@@ -57,7 +57,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        $edit = $team;
+        return view("pages.back.edit.welcome.editTeam", compact("edit"));
     }
 
     /**
@@ -69,7 +70,22 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $validation = $request->validate([
+		    // "photo" => 'required |min:2|max:300',
+            "name" => 'required|min:2|max:50',
+            "firstname" => 'required|min:2|max:50',
+            "fonction" => 'required|min:2|max:50',
+
+        ]);
+        $update = $team;
+        $update->photo = $request->photo;
+        $update->name = $request->name;
+        $update->firstname = $request->firstname;
+        $update->fonction = $request->fonction;
+
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**
