@@ -55,9 +55,10 @@ class TestimonialsController extends Controller
      * @param  \App\Models\Testimonials  $testimonials
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testimonials $testimonials)
+    public function edit($id)
     {
-        //
+        $edit = Testimonials::find($id);
+        return view("pages.back.edit.welcome.editTestimonials", compact("edit"));
     }
 
     /**
@@ -67,9 +68,23 @@ class TestimonialsController extends Controller
      * @param  \App\Models\Testimonials  $testimonials
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testimonials $testimonials)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+		    "p" => 'required |min:1',
+            "name" => 'required|min:1|max:200',
+            "firstname" => 'required|min:1|max:200',
+            "fonction" => 'required|min:1|max:200',
+        ]);
+
+        $update = Testimonials::find($id);
+        $update->p = $request->p;
+        $update->name = $request->name;
+        $update->firstname = $request->firstname;
+        $update->fonction = $request->fonction;
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**

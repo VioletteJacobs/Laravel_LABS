@@ -55,9 +55,11 @@ class CardwelcomeController extends Controller
      * @param  \App\Models\Cardwelcome  $cardwelcome
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cardwelcome $cardwelcome)
+    public function edit($id)
     {
-        //
+        $edit = Cardwelcome::find($id);
+        // dd($edit);
+        return view("pages.back.edit.welcome.editCardwelcome", compact("edit"));
     }
 
     /**
@@ -67,9 +69,21 @@ class CardwelcomeController extends Controller
      * @param  \App\Models\Cardwelcome  $cardwelcome
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cardwelcome $cardwelcome)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+		    "icone" => 'required |min:1|max:500',
+            "title" => 'required|min:1|max:100',
+            "p" => 'required|min:1',
+        ]);
+
+        $update = Cardwelcome::find($id);
+        $update->icone = $request->icone;
+        $update->title = $request->title;
+        $update->p = $request->p;
+        $update->save();
+
+        return redirect("/welcomeB");
     }
 
     /**

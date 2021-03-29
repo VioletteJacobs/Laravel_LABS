@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="{{asset('css/style.css')}}"/>
 </head>
 <body>
-    <header class="header-section">
+    {{-- <header class="header-section">
         <div class="logo">
             <img src="img/logo.png" alt=""><!-- Logo -->
         </div>
@@ -31,7 +31,7 @@
                 <li><a href="/home">BackOffice</a></li>
             </ul>
         </nav>
-    </header>
+    </header> --}}
     @yield('content')
         	<!--====== Javascripts & Jquery ======-->
 	<script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>

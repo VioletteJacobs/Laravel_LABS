@@ -18,8 +18,8 @@ class CreateAboutwelcomesTable extends Migration
             $table->text("para_right");
             $table->text("para_left");
             $table->string("btn_content");
-            $table->string("btn_href");
-            $table->string("img");
+            $table->string("btn_href")->nullable();
+            $table->string("img")->nullable();
             $table->string("video_href");
             $table->timestamps();
         });

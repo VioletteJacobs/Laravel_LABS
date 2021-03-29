@@ -35,7 +35,7 @@ class AboutwelcomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
     }
 
     /**
@@ -57,7 +57,8 @@ class AboutwelcomeController extends Controller
      */
     public function edit(Aboutwelcome $aboutwelcome)
     {
-        //
+        $edit = $aboutwelcome;
+        return view("pages.back.edit.welcome.editIntro", compact("edit"));
     }
 
     /**
@@ -69,7 +70,21 @@ class AboutwelcomeController extends Controller
      */
     public function update(Request $request, Aboutwelcome $aboutwelcome)
     {
-        //
+        $validation = $request->validate([
+		    "para_right" => 'required |min:2|max:500',
+            "para_left" => 'required|min:2|max:500',
+            "btn_content" => 'required|min:2|max:100',
+            "video_href" => 'required|min:2',
+        ]);
+        $update = $aboutwelcome;
+        $update->para_right = $request->para_right;
+        $update->para_left = $request->para_left;
+        $update->btn_content = $request->btn_content;
+        $update->video_href = $request->video_href;
+        $update->save();
+
+        return redirect("/welcomeB");
+
     }
 
     /**

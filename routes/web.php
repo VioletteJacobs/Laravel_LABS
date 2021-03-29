@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutwelcomeController;
+use App\Http\Controllers\CardwelcomeController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\TestimonialsController;
 use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
@@ -133,14 +136,13 @@ Route::get('/welcomeB', function () {
 
     $loader = Loader::all();
     $nav = Navbar::all();
+    $logo = logo::all();
+    $services = Service::all();
+    
+    
+    $titrewelcome = Titreswelcome::all();
     $carrousel = Carrousel::all();
     $cardwelcome = Cardwelcome::all();
-    $carrousel = Carrousel::all();
-    $logo = logo::all();
-    $titrewelcome = Titreswelcome::all();
-    $services = Service::all();
-
-    $carrousel = Carrousel::all();
     $about = Aboutwelcome::all();
 
     $team = Team::all();
@@ -163,3 +165,8 @@ Route::get('/welcomeB', function () {
 });
 
 Route::post("/newsletter", [NewsletterController::class, "store"]);
+
+
+Route::resource('cardWelcome', CardwelcomeController::class);
+Route::resource("aboutwelcome", AboutwelcomeController::class);
+Route::resource("testimonial", TestimonialsController::class);

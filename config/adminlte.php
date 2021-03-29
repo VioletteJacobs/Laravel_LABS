@@ -238,16 +238,45 @@ return [
         ],
         [
             'text'        => 'Accueil',
-            'url'         => '/welcomeB',
+            'url'         => '/',
             'icon'        => 'fas fa-flask',
             'label'       => null,
             'label_color' => 'success',
         ],
         ['header' => 'Modifier vos pages :'],
         [
-            'text' => 'Accueil',
-            'url'  => '/welcomeB',
-            'icon' => 'fas fa-tools',
+            'text'    => 'Accueil',
+            'icon'    => 'fas fa-tools',
+            'submenu' => [
+                [
+                    'text' => 'Carousel',
+                    'url'  => '/welcomeB',
+                ],
+                [
+                    'text' => 'About Cards',
+                    'url'  => '/welcomeB',
+                ],
+                [
+                    'text' => 'Texte de présentation',
+                    'url'  => '/welcomeB',
+                ],
+                [
+                    'text' => 'Vidéo',
+                    'url'  => '/welcomeB',
+                ],
+                [
+                    'text' => 'Témoignages',
+                    'url'  => '/welcomeB',
+                ],
+                [
+                    'text' => 'Services',
+                    'url'  => '/welcomeB',
+                ],
+                [
+                    'text' => 'Team',
+                    'url'  => '/welcomeB',
+                ],
+            ],
         ],
         [
             'text' => 'Services',
