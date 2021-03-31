@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FormcontactSeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class FormcontactSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table("formcontacts")->insert([
+            [
+                "name" => "name",
+                "subject_id" => 1,
+                "email" => "email",
+                "message" => "message",
+            ]
+        ]);
     }
 }

@@ -29,7 +29,7 @@ class NavbarSeeder extends Seeder
             ],
             [
                 "content" => "Contact",
-                "url" => "/contact"
+                "url" => "/contacter"
             ],
         ]);
     }

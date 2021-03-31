@@ -18,7 +18,7 @@
             @method("PATCH")
             <div class="from-group">
                 <label for="">Photo : </label>
-                <input type="text" name="para_right" value="{{old("photo")? old("photo") : $edit->photo}}">
+                <input type="text" name="photo" value="{{old("photo")? old("photo") : $edit->photo}}">
             </div>
             <div class="from-group">
                 <label for=""> Name: </label>

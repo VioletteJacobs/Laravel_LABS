@@ -57,7 +57,9 @@ class ContactsectionController extends Controller
      */
     public function edit(Contactsection $contactsection)
     {
-        //
+        $edit= $contactsection;
+        return view("pages.back.edit.contact.editContactsection", compact("edit"));
+
     }
 
     /**
@@ -69,7 +71,23 @@ class ContactsectionController extends Controller
      */
     public function update(Request $request, Contactsection $contactsection)
     {
-        //
+        $validation = $request->validate([
+		    // "photo" => 'required |min:2|max:300',
+            "title" => 'required|min:2|max:50',
+            "p" => 'required|min:2',
+            "title2" => 'required|min:2|max:50',
+
+        ]);
+        $update = $contactsection;
+
+        $update->title = $request->title;
+        $update->p = $request->p;
+        $update->title2 = $request->title2;
+
+        $update->save();
+
+        return redirect("/contactB");
+
     }
 
     /**

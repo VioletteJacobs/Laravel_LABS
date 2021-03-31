@@ -24,7 +24,7 @@ class EmailController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.contact.createEmail");
     }
 
     /**
@@ -35,7 +35,14 @@ class EmailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "email" => 'required|min:2|max:50',
+
+        ]);
+        $store = new Email;
+        $store->email = $request->email;
+        $store->save();
+        return redirect("/contactB");
     }
 
     /**
@@ -57,7 +64,8 @@ class EmailController extends Controller
      */
     public function edit(Email $email)
     {
-        //
+        $edit = $email;
+        return view("pages.back.edit.contact.editEmail", compact("edit"));
     }
 
     /**
@@ -69,7 +77,14 @@ class EmailController extends Controller
      */
     public function update(Request $request, Email $email)
     {
-        //
+        $validation = $request->validate([
+            "address" => 'required|min:2|max:50',
+
+        ]);
+        $update = $email;
+        $update->email = $request->email;
+        $update->save();
+        return redirect("/contactB");
     }
 
     /**
@@ -80,6 +95,7 @@ class EmailController extends Controller
      */
     public function destroy(Email $email)
     {
-        //
+        $email->delete();
+        return redirect("/contactB");
     }
 }

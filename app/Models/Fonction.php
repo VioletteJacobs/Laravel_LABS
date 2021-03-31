@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Formcontact extends Model
+class Fonction extends Model
 {
     use HasFactory;
-    public function subjects(){
-        return $this->belongsTo(Subject::class, "subject_id");
+    public function users(){
+        return $this->hasMany(User::class, "fonction_id");
     }
 }

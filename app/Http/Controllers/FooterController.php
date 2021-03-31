@@ -57,7 +57,8 @@ class FooterController extends Controller
      */
     public function edit(Footer $footer)
     {
-        //
+        $edit = $footer;
+        return view("pages.back.edit.all.editFooter", compact("edit"));
     }
 
     /**
@@ -69,7 +70,20 @@ class FooterController extends Controller
      */
     public function update(Request $request, Footer $footer)
     {
-        //
+        $validation = $request->validate([
+            "href" => 'required',
+            "footer" => 'required',
+            "copyright" => 'required',
+
+        ]);
+        $update = $footer;
+
+        $update->href = $request->href;
+        $update->footer = $request->footer;
+        $update->copyright = $request->copyright;
+
+        $update->save();
+        return redirect("/mainB");
     }
 
     /**

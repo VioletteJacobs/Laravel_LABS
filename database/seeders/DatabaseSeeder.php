@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\Subject;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,11 +20,15 @@ class DatabaseSeeder extends Seeder
             NavbarSeeder::class,
             FooterSeeder::class,
             NewsletterSeeder::class,
+
             // contact
             AddressSeeder::class,
             PhoneSeeder::class,
             EmailSeeder::class,
             ContactsectionSeeder::class,
+            SubjectSeeder::class,
+            FormcontactSeeder::class,
+
             // blade welcome
             CarrouselSeeder::class,
             LogoSeeder::class,
@@ -49,6 +53,11 @@ class DatabaseSeeder extends Seeder
             // blade contact
             IntrocontactSeeder::class,
             MapSeeder::class,
+
+            //authentification
+            RoleSeeder::class,
+            FonctionSeeder::class,
+            ProfilSeeder::class,
         ]);
     }
 }

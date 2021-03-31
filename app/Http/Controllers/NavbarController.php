@@ -57,7 +57,8 @@ class NavbarController extends Controller
      */
     public function edit(Navbar $navbar)
     {
-        //
+        $edit = $navbar;
+        return view("pages.back.edit.all.editNav", compact("edit"));
     }
 
     /**
@@ -69,7 +70,16 @@ class NavbarController extends Controller
      */
     public function update(Request $request, Navbar $navbar)
     {
-        //
+        $validation = $request->validate([
+            "content" => 'required|min:3|max:50',
+            "url" => 'required|min:1',
+
+        ]);
+        $update = $navbar;
+        $update->content = $request->content;
+        $update->url = $request->url;
+        $update->save();
+        return redirect("/mainB");
     }
 
     /**

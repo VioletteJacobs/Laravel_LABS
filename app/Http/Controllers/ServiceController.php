@@ -24,7 +24,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view("pages.back.create.welcome.createService");
+        return view("pages.back.create.service.createService");
     }
 
     /**
@@ -49,7 +49,7 @@ class ServiceController extends Controller
 
         $update->save();
 
-        return redirect("/welcomeB");
+        return redirect("/serviceB");
     }
 
     /**
@@ -72,7 +72,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         $edit = $service;
-        return view("pages.back.edit.welcome.editService", compact("edit"));
+        return view("pages.back.edit.services.editService", compact("edit"));
     }
 
     /**
@@ -97,7 +97,7 @@ class ServiceController extends Controller
 
         $update->save();
 
-        return redirect("/welcomeB");
+        return redirect("/serviceB");
     }
 
     /**
@@ -109,6 +109,6 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
-        return redirect("/welcomeB");
+        return redirect("/serviceB");
     }
 }

@@ -125,40 +125,6 @@
   <a href="/testimonial/create" style="background-color: rgb(44, 230, 171)">Ajouter un témoignage</a>
 </section>
 
-<section class="mt-5">
-  <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les services: </h1>
-  <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Titre</th>
-          <th scope="col">Icon </th>
-          <th scope="col">Paragraphe</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-          @foreach ($services as $item)
-          <tr>
-            <td><i class="{{$item->icon}}"></i></td>
-            <td>{{$item->title}}</td>
-            <td>{{$item->p}}</td>
-            <td>
-              <a href="/service/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
-            </td>
-            <td>
-              <form action="/service/{{$item->id}}" method="POST">
-                @csrf
-                @method("DELETE")
-                <button type="submit" class="btn" style="background-color : #DB6778">Delete</button>
-              </form>
-            </td>
-          </tr>
-          @endforeach
-      </tbody>
-  </table>
-  <a href="/service/create" style="background-color: rgb(44, 230, 171)">Ajouter un service</a>
-</section>
 
 <section class="mt-5">
   <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les profils des membres de l'équipe: </h1>

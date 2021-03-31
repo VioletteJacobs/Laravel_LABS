@@ -1,11 +1,8 @@
 <!-- Intro Section -->
 <div class="hero-section">
     <div class="hero-content">
-        @foreach ($carrousel as $item)
-            
-        @endforeach
         <div class="hero-center">
-            <img src="img/big-logo.png" alt="">
+            <img src="{{asset("storage/img/".$logo->url)}}" alt="" width= "548" height="148px"><!-- Logo -->
             <p>Get your freebie template now!</p>
         </div>
     </div>

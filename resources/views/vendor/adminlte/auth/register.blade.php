@@ -17,10 +17,25 @@
     <form action="{{ $register_url }}" method="post">
         {{ csrf_field() }}
 
-        {{-- Name field --}}
+        {{-- firstname field --}}
         <div class="input-group mb-3">
+            <input type="text" name="firstname" class="form-control {{ $errors->has('Nom ') ? 'is-invalid' : '' }}"
+                   value="{{ old('firstname') }}" placeholder="{{ __('prenom') }}" autofocus>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('firstname'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('firstname') }}</strong>
+                </div>
+            @endif
+        </div>
+         {{-- name field --}}
+         <div class="input-group mb-3">
             <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                   value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
+                   value="{{ old('name') }}" placeholder="{{ __('nom') }}" autofocus>
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -33,6 +48,44 @@
             @endif
         </div>
 
+        
+        {{-- fonction field --}}
+        <div class="input-group mb-3">
+            <?php use App\Models\Fonction; $fonction=Fonction::all();?>
+            <select name="fonction" id="" class="form-control">
+                @foreach ($fonction as $item)
+                <option value="{{$item->id}}">{{$item->fonction}}</option>
+                @endforeach
+            </select>
+            {{-- <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+            value="{{ old('name') }}" placeholder="{{ __('nom') }}" autofocus> --}}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('name'))
+            <div class="invalid-feedback">
+                <strong>{{ $errors->first('name') }}</strong>
+            </div>
+            @endif
+        </div>
+        
+        {{-- photo field --}}
+        <div class="input-group mb-3">
+            <input type="file" name="name" class="form-control {{ $errors->has('photo') ? 'is-invalid' : '' }}"
+            value="{{ old('name') }}" placeholder="{{ __('nom') }}" autofocus>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('name'))
+            <div class="invalid-feedback">
+                <strong>{{ $errors->first('name') }}</strong>
+            </div>
+            @endif
+        </div>
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
@@ -48,7 +101,7 @@
                 </div>
             @endif
         </div>
-
+        
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password"

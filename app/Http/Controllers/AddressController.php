@@ -24,7 +24,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.contact.createAddress");
     }
 
     /**
@@ -35,7 +35,14 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "address" => 'required|min:2|max:50',
+
+        ]);
+        $store = new Address;
+        $store->address = $request->address;
+        $store->save();
+        return redirect("/contactB");
     }
 
     /**
@@ -57,7 +64,8 @@ class AddressController extends Controller
      */
     public function edit(Address $address)
     {
-        //
+        $edit =$address;
+        return view("pages.back.edit.contact.editAddress", compact("edit"));
     }
 
     /**
@@ -69,7 +77,14 @@ class AddressController extends Controller
      */
     public function update(Request $request, Address $address)
     {
-        //
+        $validation = $request->validate([
+            "address" => 'required|min:2|max:50',
+
+        ]);
+        $update = $address;
+        $update->address = $request->address;
+        $update->save();
+        return redirect("/contactB");
     }
 
     /**
@@ -80,6 +95,7 @@ class AddressController extends Controller
      */
     public function destroy(Address $address)
     {
-        //
+        $address->delete();
+        return redirect("/contactB");
     }
 }

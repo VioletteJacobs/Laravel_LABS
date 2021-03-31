@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Titresservice;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class TitresserviceController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TitresserviceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Titresservice  $titresservice
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Titresservice $titresservice)
+    public function show(Role $role)
     {
         //
     }
@@ -52,46 +52,33 @@ class TitresserviceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Titresservice  $titresservice
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        $edit = Titresservice::find($id);
-        return view("pages.back.edit.services.editTitresservice", compact("edit"));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Titresservice  $titresservice
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        $validation = $request->validate([
-
-            "title" => 'required|min:2|max:100',
-
-
-        ]);
-        $update = Titresservice::find($id);
-        $update->title = $request->title;
-
-
-        $update->save();
-
-        return redirect("/serviceB");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Titresservice  $titresservice
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Titresservice $titresservice)
+    public function destroy(Role $role)
     {
         //
     }

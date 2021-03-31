@@ -1,5 +1,5 @@
 	<!-- Footer section -->
 	<footer class="footer-section">
-		<h2>{{$footer[0]->footer}}<a href="{{$footer[0]->href}}" target="_blank">{{$footer[0]->copyright}}</a></h2>
+		<h2>{{$footer->footer}}<a href="{{$footer->href}}" target="_blank">{{$footer->copyright}}</a></h2>
 	</footer>
 	<!-- Footer section end -->

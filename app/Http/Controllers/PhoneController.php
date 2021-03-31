@@ -24,7 +24,7 @@ class PhoneController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.contact.createPhone");
     }
 
     /**
@@ -35,7 +35,14 @@ class PhoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "phone" => 'required|min:2|max:50',
+
+        ]);
+        $store = new Phone;
+        $store->phone = $request->phone;
+        $store->save();
+        return redirect("/contactB");
     }
 
     /**
@@ -57,7 +64,9 @@ class PhoneController extends Controller
      */
     public function edit(Phone $phone)
     {
-        //
+        $edit = $phone;
+        return view("pages.back.edit.contact.editPhone", compact("edit"));
+
     }
 
     /**
@@ -69,7 +78,14 @@ class PhoneController extends Controller
      */
     public function update(Request $request, Phone $phone)
     {
-        //
+        $validation = $request->validate([
+            "phone" => 'required|min:2|max:50',
+
+        ]);
+        $update = $phone;
+        $update->phone = $request->phone;
+        $update->save();
+        return redirect("/contactB");
     }
 
     /**
@@ -80,6 +96,7 @@ class PhoneController extends Controller
      */
     public function destroy(Phone $phone)
     {
-        //
+        $phone->delete();
+        return redirect("/contactB");
     }
 }

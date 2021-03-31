@@ -55,9 +55,10 @@ class IntroserviceController extends Controller
      * @param  \App\Models\Introservice  $introservice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Introservice $introservice)
+    public function edit($id)
     {
-        //
+        $edit = Introservice::find($id);
+        return view("pages.back.edit.services.editIntroservice", compact("edit"));
     }
 
     /**
@@ -67,9 +68,22 @@ class IntroserviceController extends Controller
      * @param  \App\Models\Introservice  $introservice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Introservice $introservice)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+		    "home" => 'required |min:2|max:100',
+            "title" => 'required|min:2|max:100',
+            "service" => 'required|min:2|max:500',
+
+        ]);
+        $update = Introservice::find($id);
+        $update->home = $request->home;
+        $update->title = $request->title;
+        $update->service = $request->service;
+
+        $update->save();
+
+        return redirect("/serviceB");
     }
 
     /**

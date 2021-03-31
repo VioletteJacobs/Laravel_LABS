@@ -245,6 +245,28 @@ return [
         ],
         ['header' => 'Modifier vos pages :'],
         [
+            'text'    => 'général',
+            'icon'    => 'fas fa-tools',
+            'submenu' => [
+                [
+                    'text' => 'La barre de navigation',
+                    'url'  => '/mainB',
+                ],
+                [
+                    'text' => 'Votre logo',
+                    'url'  => '/mainB',
+                ],
+                [
+                    'text' => 'Le footer',
+                    'url'  => '/mainB',
+                ],
+                [
+                    'text' => 'La newsletter',
+                    'url'  => '/mainB',
+                ],
+            ],
+        ],
+        [
             'text'    => 'Accueil',
             'icon'    => 'fas fa-tools',
             'submenu' => [
@@ -268,37 +290,66 @@ return [
                     'text' => 'Témoignages',
                     'url'  => '/welcomeB',
                 ],
+                // [
+                    //     'text' => 'Services',
+                    //     'url'  => '/welcomeB',
+                    // ],
+                    [
+                        'text' => 'Team',
+                        'url'  => '/welcomeB',
+                    ],
+                ],
+            ],
+            [
+                'text'    => 'Services',
+                'icon'    => 'fas fa-tools',
+                'submenu' => [
+                    [
+                        'text' => 'Introduction',
+                        'url'  => '/serviceB',
+                    ],
+                    [
+                        'text' => 'Les titres',
+                        'url'  => '/servicesB',
+                    ],
+                    [
+                        'text' => 'Vos services',
+                        'url'  => '/servicesB',
+                    ],
+                ],
+            ],
+            
+            [
+                'text' => 'Blog',
+                'url'  => '/blogB',
+                'icon' => 'fas fa-tools',
+            ],
+            [
+                'text'    => 'Contact',
+            'icon'    => 'fas fa-tools',
+            'submenu' => [
                 [
-                    'text' => 'Services',
-                    'url'  => '/welcomeB',
+                    'text' => 'formulaire de contact',
+                    'url'  => '/contactB',
                 ],
                 [
-                    'text' => 'Team',
-                    'url'  => '/welcomeB',
+                    'text' => 'Partie mauve',
+                    'url'  => '/contactB',
+                ],
+                [
+                    'text' => 'Vos adresses',
+                    'url'  => '/contactB',
+                ],
+                [
+                    'text' => 'Vos adresses mails',
+                    'url'  => '/contactB',
+                ],
+                [
+                    'text' => 'Vos numéros de téléphone',
+                    'url'  => '/contactB',
                 ],
             ],
         ],
-        [
-            'text' => 'Services',
-            'url'  => '/serviceB',
-            'icon' => 'fas fa-tools',
-        ],
-        [
-            'text' => 'Blog',
-            'url'  => '/blogB',
-            'icon' => 'fas fa-tools',
-        ],
-        [
-            'text' => 'Contact',
-            'url'  => '/contact',
-            'icon' => 'fas fa-tools',
-        ],
-        [
-            'text' => 'Mail',
-            'url'  => '/contact',
-            'icon' => 'fas fa-tools',
-        ],
-        
         ['header' => 'Admin'],
         [
             'text'       => 'Accès',
