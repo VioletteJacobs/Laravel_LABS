@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\Subject;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +16,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            //authentification
+            RoleSeeder::class,
+            FonctionSeeder::class,
+            ProfilSeeder::class,
+            
             // all
             LoaderSeeder::class,
             NavbarSeeder::class,
@@ -43,7 +49,11 @@ class DatabaseSeeder extends Seeder
 
             // blade blog
             IntroblogSeeder::class,
-
+            TagSeeder::class,
+            CategorySeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class,
+            TagPostSeeder::class,
 
             // blade services
             TitresserviceSeeder::class,
@@ -55,10 +65,6 @@ class DatabaseSeeder extends Seeder
             IntrocontactSeeder::class,
             MapSeeder::class,
 
-            //authentification
-            RoleSeeder::class,
-            FonctionSeeder::class,
-            ProfilSeeder::class,
         ]);
     }
 }

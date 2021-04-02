@@ -16,6 +16,7 @@ use App\Http\Controllers\MapController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PhoneController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReadyController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
@@ -65,6 +66,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// blade
 Route::get('/', function () {
 
     $loader = Loader::all();
@@ -153,14 +156,9 @@ Route::get('/contacter', function () {
 
 
 
-Auth::routes();
-
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
 
 Route::get('/welcomeB', function () {
-
+    
     $loader = Loader::all();
     $nav = Navbar::all();
     $logo = logo::first();
@@ -171,68 +169,68 @@ Route::get('/welcomeB', function () {
     $carrousel = Carrousel::all();
     $cardwelcome = Cardwelcome::all();
     $about = Aboutwelcome::all();
-
+    
     $team = Team::all();
     $Ceo = Ceo::all();
     $teamRight = $team->shuffle();
     $teamLeft =$team->shuffle();
-
+    
     $testimonials = Testimonials::all();
-
+    
     $newsletter = Newsletter::first();
-
-
-
-
+    
+    
+    
+    
     $footer = Footer::first();
-
-
+    
+    
     return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "newsletter",  "footer"));
 });
 
 Route::get("/contactB", function(){
-
+    
     $contactSection = Contactsection::all();
     // $formContact = Formcontact::first();
     $address = Address::all();
     $phone = Phone::all();
     $email = Email::all();
-
+    
     return view('pages.back.contactB', compact("contactSection", "address", "phone", "email"));
-
+    
 });
 
 Route::get("/mainB", function(){
     $loader = Loader::first();
     $nav = Navbar::all();
     $logo = logo::first();
-
+    
     $newsletter = Newsletter::first();
-
+    
     $footer = Footer::first();
     return view("pages.back.mainB", compact("loader", "logo", "nav", "newsletter", "footer"));
 });
 
 Route::get("/serviceB", function(){
-
+    
     $introService = Introservice::all();
     $titresService =Titresservice::all();
     $services = Service::all();
     $icon = Icon::all();
-
+    
     return view("pages.back.serviceB", compact("introService", "titresService", "services", "icon"));
 });
 
 Route::get("/blogB", function(){
-
-
-
+    
+    
+    
     return view("pages.back.blogB", compact("introService", "titresService", "services"));
 });
 
 Route::get("/contactB", function(){
-
-
+    
+    
     $introContact = Introcontact::first();
     $map = Map::first();
     
@@ -240,11 +238,12 @@ Route::get("/contactB", function(){
     $address = Address::all();
     $phone = Phone::all();
     $email = Email::all();
-
+    
     return view("pages.back.contactB", compact("introContact","map", "contactSection", "address", "phone", "email", ));
 });
 
 
+// route ressource
 Route::resource("logo", LogoController::class);
 Route::resource("navbar", NavbarController::class);
 Route::resource("newsletter", NewsletterController::class);
@@ -265,6 +264,9 @@ Route::resource('titresService', TitresserviceController ::class);
 Route::resource('introervice', IntroserviceController ::class);
 
 
+route::resource("post", PostController::class);
+
+
 Route::resource('introcontact', IntrocontactController ::class);
 Route::resource('map', MapController::class);
 Route::resource("contact", ContactsectionController::class);
@@ -275,11 +277,21 @@ Route::resource("address", AddressController::class);
 Route::resource("email", EmailController::class);
 Route::resource('phone', PhoneController::class);
 
+
+
+
 // utilisateurs + approbation par l'admin
 Route::get("/validate/{id}", [UserController::class, "validation"]);
 Route::resource("userB", UserController::class);
 
 
-
+// mailing
 Route::post("/newsletter", [NewsletterController::class, "store"]);
 Route::post("/mail", [MailController::class, "store"]);
+
+// auth et adminLTE
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
