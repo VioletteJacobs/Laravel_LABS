@@ -57,6 +57,7 @@ class RegisterController extends Controller
             'role_id' => ['integer'],
             "photo" => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'check' => ['integer'],
         ]);
     }
 
@@ -73,9 +74,10 @@ class RegisterController extends Controller
             'firstname' => $data['firstname'],
             'email' => $data['email'],
             'fonction_id' => $data['fonction_id'],
-            'firstname' => 3,
+            'role' => 3,
             'photo' => $data['photo'],
             'password' => Hash::make($data['password']),
+            'check' => 1,
         ]);
     }
 }

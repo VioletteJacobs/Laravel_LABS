@@ -21,6 +21,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\TitresserviceController;
+use App\Http\Controllers\UserController;
 use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
@@ -82,7 +83,7 @@ Route::get('/', function () {
     $Ceo = Ceo::all();
 
     $testimonials = Testimonials::all();
-    $ready = Ready::all();
+    $newsletter = Newsletter::first();
 
     $subject= Subject::all();
     $contactSection = Contactsection::all();
@@ -93,7 +94,7 @@ Route::get('/', function () {
     $footer = Footer::first();
 
 
-    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "testimonials", "titrewelcome", "ready", "contactSection", "subject", "address", "phone", "email", "footer"));
+    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "testimonials", "titrewelcome", "newsletter", "contactSection", "subject", "address", "phone", "email", "footer"));
 });
 
 
@@ -113,7 +114,7 @@ Route::get('/services', function () {
     $phone = Phone::all();
     $email = Email::all();
 
-    $newsletter = Newsletter::all();
+    $newsletter = Newsletter::first();
     $footer = Footer::first();
     return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "services","footer" , "contactSection", "address", "phone", "email","newsletter", "footer"));
 });
@@ -126,7 +127,7 @@ Route::get('/blog', function () {
 
     $intro = Introblog::all();
 
-    $newsletter = Newsletter::all();
+    $newsletter = Newsletter::first();
     $footer = Footer::first();
 
     return view('pages.front.blog', compact("loader", "nav", "logo","intro","newsletter","footer"));
@@ -177,14 +178,16 @@ Route::get('/welcomeB', function () {
     $teamLeft =$team->shuffle();
 
     $testimonials = Testimonials::all();
-    $ready = Ready::all();
+
+    $newsletter = Newsletter::first();
+
 
 
 
     $footer = Footer::first();
 
 
-    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "ready",  "footer"));
+    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "newsletter",  "footer"));
 });
 
 Route::get("/contactB", function(){
@@ -271,6 +274,10 @@ Route::resource("contactsection", ContactsectionController::class);
 Route::resource("address", AddressController::class);
 Route::resource("email", EmailController::class);
 Route::resource('phone', PhoneController::class);
+
+// utilisateurs + approbation par l'admin
+Route::get("/validate/{id}", [UserController::class, "validation"]);
+Route::resource("userB", UserController::class);
 
 
 
