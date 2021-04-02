@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             NavbarSeeder::class,
             FooterSeeder::class,
             NewsletterSeeder::class,
+            IconSeeder::class,
 
             // contact
             AddressSeeder::class,

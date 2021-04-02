@@ -13,7 +13,7 @@
             @endif
     
     
-        <form action="/aboutwelcome/{{$edit->id}}" method="POST">
+        <form action="/aboutwelcome/{{$edit->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method("PATCH")
             <div class="from-group">
@@ -27,6 +27,10 @@
             <div class="from-group">
                 <label for="">Contenu du Bouton : </label>
                 <input type="text" name="btn_content" value="{{old("btn_content")? old("btn_content") : $edit->btn_content}}">
+            </div>
+            <div class="from-group">
+                <label for="">Photo de la  de la vidéo : </label>
+                <input type="file" name="img" value="{{old("img")? old("img") : $edit->img}}">
             </div>
             <div class="from-group">
                 <label for="">Lien de la vidéo : </label>

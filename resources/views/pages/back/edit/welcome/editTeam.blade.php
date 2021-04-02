@@ -13,12 +13,12 @@
             @endif
     
     
-        <form action="/team/{{$edit->id}}" method="POST">
+        <form action="/team/{{$edit->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method("PATCH")
             <div class="from-group">
                 <label for="">Photo : </label>
-                <input type="text" name="para_right" value="{{old("photo")? old("photo") : $edit->photo}}">
+                <input type="file" name="para_right" value="{{old("photo")? old("photo") : $edit->photo}}">
             </div>
             <div class="from-group">
                 <label for=""> Name: </label>

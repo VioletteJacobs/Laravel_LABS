@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,13 +32,36 @@
             </ul>
         </nav>
     </header> --}}
-    @yield('content')
+    {{-- @yield('content') --}}
         	<!--====== Javascripts & Jquery ======-->
-	<script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+	{{-- <script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
 	<script src="{{asset('js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('js/magnific-popup.min.js')}}"></script>
 	<script src="{{asset('js/owl.carousel.min.js')}}"></script>
 	<script src="{{asset('js/circle-progress.min.js')}}"></script>
 	<script src="{{asset('js/main.js')}}"></script>
 </body>
-</html>
+</html> --}}
+
+@extends('adminlte::page')
+
+@section('title', 'AdminLTE')
+
+@section('content_header')
+    <h1 class="m-0 text-dark">Dashboard</h1>
+@stop
+
+@section('content')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container m-5">
+						@yield('content')
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+@stop
+

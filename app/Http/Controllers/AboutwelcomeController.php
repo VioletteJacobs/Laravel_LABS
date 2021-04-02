@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aboutwelcome;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutwelcomeController extends Controller
 {
@@ -74,11 +75,15 @@ class AboutwelcomeController extends Controller
 		    "para_right" => 'required |min:2|max:500',
             "para_left" => 'required|min:2|max:500',
             "btn_content" => 'required|min:2|max:100',
+            "img" => "required",
             "video_href" => 'required|min:2',
         ]);
         $update = $aboutwelcome;
         $update->para_right = $request->para_right;
         $update->para_left = $request->para_left;
+        Storage::delete("public/img/".$update->img);
+        Storage::put("public/img", $request->img);
+        $update->img = $request->file("img")->hashName();
         $update->btn_content = $request->btn_content;
         $update->video_href = $request->video_href;
         $update->save();

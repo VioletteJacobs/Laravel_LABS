@@ -44,7 +44,7 @@
 				<div class="intro-video">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<img src="{{$about[0]->img}}" alt="">
+							<img src="{{asset("storage/img/".$about[0]->img)}}" width="616px" height="332" alt="">
 							<a href="{{$about[0]->video_href}}" class="video-popup">
 								<i class="fa fa-play"></i>
 							</a>

@@ -16,7 +16,7 @@ class CEOSeeder extends Seeder
     {
         DB::table("ceos")->insert([
             [
-                "photo" => "img/team/2.jpg",
+                "photo" => "2.jpg",
                 "name" => "Gonzalez",
                 "firstname" => "Elisa",
                 "fonction" => "CEO",

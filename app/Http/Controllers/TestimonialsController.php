@@ -93,11 +93,15 @@ class TestimonialsController extends Controller
             "name" => 'required|min:1|max:200',
             "firstname" => 'required|min:1|max:200',
             "fonction" => 'required|min:1|max:200',
+            "photo" => "required",
         ]);
 
         $update = Testimonials::find($id);
         $update->p = $request->p;
         $update->name = $request->name;
+        Storage::delete("public/img/avatar".$update->photo);
+        Storage::put("public/img/avatar", $request->photo);
+        $update->photo = $request->file("photo")->hashName();
         $update->firstname = $request->firstname;
         $update->fonction = $request->fonction;
         $update->save();

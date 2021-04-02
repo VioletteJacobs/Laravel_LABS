@@ -11,14 +11,16 @@ class Mailsend extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $letter;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->letter = $data;
     }
 
     /**
@@ -28,6 +30,7 @@ class Mailsend extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+
+        return $this->from($this->letter->email)->subject($this->letter->subject)->view('template.mail.templateMail')->with(["email" => $this->letter->email, "message" => $this->letter->message, "name" => $this->letter->name]);
     }
 }

@@ -16,13 +16,25 @@ class TeamSeeder extends Seeder
     {
         DB::table("teams")->insert([
             [
-                "photo" => "img/team/1.jpg",
+                "photo" => "1.jpg",
                 "name" => "Willimas",
                 "firstname" => "Christinne",
+                "fonction" => "CEO",
+            ],
+            [
+                "photo" => "1.jpg",
+                "name" => "Willimas",
+                "firstname" => "Marie",
                 "fonction" => "HappyNess Manager",
             ],
             [
-                "photo" => "img/team/3.jpg",
+                "photo" => "1.jpg",
+                "name" => "Willimas",
+                "firstname" => "Sophia",
+                "fonction" => "HappyNess Manager",
+            ],
+            [
+                "photo" => "3.jpg",
                 "name" => "Broder",
                 "firstname" => "Pauline",
                 "fonction" => "Full-stack web dev",

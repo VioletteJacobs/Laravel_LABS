@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
@@ -36,13 +37,15 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-		    // "photo" => 'required |min:2|max:300',
+		    "photo" => 'required |min:2|max:300',
             "name" => 'required|min:2|max:50',
             "firstname" => 'required|min:2|max:50',
             "fonction" => 'required|min:2|max:50',
 
         ]);
         $update = new Team;
+        Storage::delete("public/img/team/".$update->photo);
+        Storage::put("public/img/team", $request->photo);
         $update->photo = $request->photo;
         $update->name = $request->name;
         $update->firstname = $request->firstname;

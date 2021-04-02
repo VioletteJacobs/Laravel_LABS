@@ -8,8 +8,11 @@ use App\Http\Controllers\CeoController;
 use App\Http\Controllers\ContactsectionController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\IntrocontactController;
 use App\Http\Controllers\IntroserviceController;
 use App\Http\Controllers\LogoController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PhoneController;
@@ -27,7 +30,9 @@ use App\Models\Contactsection;
 use App\Models\Email;
 use App\Models\Footer;
 use App\Models\Formcontact;
+use App\Models\Icon;
 use App\Models\Introblog;
+use App\Models\Introcontact;
 use App\Models\Introservice;
 use App\Models\Loader;
 use App\Models\logo;
@@ -40,6 +45,7 @@ use App\Models\Service;
 use App\Models\Servicenew;
 use App\Models\Serviceswelcome;
 use App\Models\Servicevip;
+use App\Models\Subject;
 use App\Models\Team;
 use App\Models\Testimonials;
 use App\Models\Titresservice;
@@ -74,12 +80,11 @@ Route::get('/', function () {
 
     $team = Team::all();
     $Ceo = Ceo::all();
-    $teamRight = $team->shuffle();
-    $teamLeft =$team->shuffle();
 
     $testimonials = Testimonials::all();
     $ready = Ready::all();
 
+    $subject= Subject::all();
     $contactSection = Contactsection::all();
     $address = Address::all();
     $phone = Phone::all();
@@ -88,7 +93,7 @@ Route::get('/', function () {
     $footer = Footer::first();
 
 
-    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "ready", "contactSection", "address", "phone", "email", "footer"));
+    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "testimonials", "titrewelcome", "ready", "contactSection", "subject", "address", "phone", "email", "footer"));
 });
 
 
@@ -137,11 +142,12 @@ Route::get('/contacter', function () {
     $address = Address::all();
     $phone = Phone::all();
     $email = Email::all();
+    $subject= Subject::all();
 
     $map = Map::all();
 
     $footer = Footer::first();
-    return view('pages.front.contact', compact("loader", "nav", "logo", "footer" , "contactSection", "address", "phone", "email", "map", "footer"));
+    return view('pages.front.contact', compact("loader", "nav", "logo", "footer" , "contactSection", "subject", "address", "phone", "email", "map", "footer"));
 });
 
 
@@ -173,15 +179,12 @@ Route::get('/welcomeB', function () {
     $testimonials = Testimonials::all();
     $ready = Ready::all();
 
-    $contactSection = Contactsection::all();
-    $address = Address::all();
-    $phone = Phone::all();
-    $email = Email::all();
+
 
     $footer = Footer::first();
 
 
-    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "ready", "contactSection", "address", "phone", "email", "footer"));
+    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "ready",  "footer"));
 });
 
 Route::get("/contactB", function(){
@@ -206,28 +209,38 @@ Route::get("/mainB", function(){
     $footer = Footer::first();
     return view("pages.back.mainB", compact("loader", "logo", "nav", "newsletter", "footer"));
 });
+
 Route::get("/serviceB", function(){
 
     $introService = Introservice::all();
     $titresService =Titresservice::all();
     $services = Service::all();
+    $icon = Icon::all();
 
-    return view("pages.back.serviceB", compact("introService", "titresService", "services"));
+    return view("pages.back.serviceB", compact("introService", "titresService", "services", "icon"));
 });
+
 Route::get("/blogB", function(){
 
 
 
     return view("pages.back.blogB", compact("introService", "titresService", "services"));
 });
+
 Route::get("/contactB", function(){
 
 
+    $introContact = Introcontact::first();
+    $map = Map::first();
+    
+    $contactSection = Contactsection::all();
+    $address = Address::all();
+    $phone = Phone::all();
+    $email = Email::all();
 
-    return view("pages.back.contactB", compact("introService", "titresService", "services"));
+    return view("pages.back.contactB", compact("introContact","map", "contactSection", "address", "phone", "email", ));
 });
 
-Route::post("/newsletter", [NewsletterController::class, "store"]);
 
 Route::resource("logo", LogoController::class);
 Route::resource("navbar", NavbarController::class);
@@ -241,13 +254,7 @@ Route::resource("testimonial", TestimonialsController::class);
 Route::resource("carrousel", CarrouselController::class);
 Route::resource("team", TeamController::class);
 Route::resource('ceo', CeoController::class);
-
-
 Route::resource('ready', ReadyController::class);
-Route::resource("address", AddressController::class);
-Route::resource("phone", PhoneController::class);
-Route::resource('email', EmailController::class);
-Route::resource("contact", ContactsectionController::class);
 
 
 Route::resource("service", ServiceController::class);
@@ -255,7 +262,17 @@ Route::resource('titresService', TitresserviceController ::class);
 Route::resource('introervice', IntroserviceController ::class);
 
 
+Route::resource('introcontact', IntrocontactController ::class);
+Route::resource('map', MapController::class);
+Route::resource("contact", ContactsectionController::class);
+
+Route::resource('map', MapController::class);
 Route::resource("contactsection", ContactsectionController::class);
 Route::resource("address", AddressController::class);
 Route::resource("email", EmailController::class);
 Route::resource('phone', PhoneController::class);
+
+
+
+Route::post("/newsletter", [NewsletterController::class, "store"]);
+Route::post("/mail", [MailController::class, "store"]);

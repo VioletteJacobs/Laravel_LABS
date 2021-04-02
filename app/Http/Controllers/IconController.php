@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Newsletter as MailNewsletter;
-use App\Models\Newsletter;
-use App\Models\Sendnewsletter as ModelsSendnewsletter;
+use App\Models\Icon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
-class NewsletterController extends Controller
+class IconController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,22 +35,16 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        $newsletter = new ModelsSendnewsletter;
-        $newsletter->email = $request->email;
-        $newsletter->save();
-        Mail::to($request->email)->send(new MailNewsletter($request));
-        return redirect()->back();
-
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Newsletter  $newsletter
+     * @param  \App\Models\Icon  $icon
      * @return \Illuminate\Http\Response
      */
-    public function show(Newsletter $newsletter)
+    public function show(Icon $icon)
     {
         //
     }
@@ -61,10 +52,10 @@ class NewsletterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Newsletter  $newsletter
+     * @param  \App\Models\Icon  $icon
      * @return \Illuminate\Http\Response
      */
-    public function edit(Newsletter $newsletter)
+    public function edit(Icon $icon)
     {
         //
     }
@@ -73,10 +64,10 @@ class NewsletterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Newsletter  $newsletter
+     * @param  \App\Models\Icon  $icon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Newsletter $newsletter)
+    public function update(Request $request, Icon $icon)
     {
         //
     }
@@ -84,10 +75,10 @@ class NewsletterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Newsletter  $newsletter
+     * @param  \App\Models\Icon  $icon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Newsletter $newsletter)
+    public function destroy(Icon $icon)
     {
         //
     }

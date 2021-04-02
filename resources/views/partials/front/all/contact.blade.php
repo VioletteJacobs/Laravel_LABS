@@ -24,7 +24,8 @@
             </div>
             <!-- contact form -->
             <div class="col-md-6 col-pull">
-                <form class="form-class" id="con_form">
+                <form class="form-class" id="con_form" action="/mail" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" name="name" placeholder="Your name">
@@ -33,7 +34,14 @@
                             <input type="text" name="email" placeholder="Your email">
                         </div>
                         <div class="col-sm-12">
-                            <input type="text" name="subject" placeholder="Subject">
+
+                            <select name="subject_id" id="" class="form-control pb-5">
+                                @foreach ($subject as $item)
+                                <option value="{{$item->id}}" >{{$item->subject}}</option>
+                                @endforeach
+                            </select>
+
+
                             <textarea name="message" placeholder="Message"></textarea>
                             <button class="site-btn">send</button>
                         </div>

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Icon extends Model
 {
     use HasFactory;
-    public function icons(){
-        return $this->belongsTo(Icon::class, "icon_id");
+    public function services(){
+        return $this->hasMany(Service::class, "icon_id");
     }
 }

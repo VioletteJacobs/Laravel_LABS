@@ -11,4 +11,7 @@ class Subject extends Model
     public function formcontacts(){
         return $this->hasMany(Formcontact::class, "subject_id");
     }
+    public function sendmails(){
+        return $this->hasMany(Sendmail::class, "subject_id");
+    }
 }

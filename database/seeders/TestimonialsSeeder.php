@@ -18,7 +18,7 @@ class TestimonialsSeeder extends Seeder
             [
                 "span" => "‘​‌‘​‌",
                 "p" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "photo" => "img/avatar/01.jpg",
+                "photo" => "01.jpg",
                 "name" => "Smith",
                 "firstname" => "Michael",
                 "fonction" => "CEO Company",
@@ -26,7 +26,7 @@ class TestimonialsSeeder extends Seeder
             [
                 "span" => "‘​‌‘​‌",
                 "p" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "photo" => "img/avatar/01.jpg",
+                "photo" => "01.jpg",
                 "name" => "Dupont",
                 "firstname" => "Nicolas",
                 "fonction" => "CEO Company",
@@ -34,7 +34,7 @@ class TestimonialsSeeder extends Seeder
             [
                 "span" => "‘​‌‘​‌",
                 "p" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "photo" => "img/avatar/01.jpg",
+                "photo" => "01.jpg",
                 "name" => "Diaz",
                 "firstname" => "Carlotta",
                 "fonction" => "CEO Company",
@@ -42,7 +42,7 @@ class TestimonialsSeeder extends Seeder
             [
                 "span" => "‘​‌‘​‌",
                 "p" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "photo" => "img/avatar/01.jpg",
+                "photo" => "01.jpg",
                 "name" => "Perez",
                 "firstname" => "Andreas",
                 "fonction" => "CEO Company",
@@ -50,7 +50,7 @@ class TestimonialsSeeder extends Seeder
             [
                 "span" => "‘​‌‘​‌",
                 "p" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "photo" => "img/avatar/01.jpg",
+                "photo" => "01.jpg",
                 "name" => "Smart",
                 "firstname" => "Elise",
                 "fonction" => "Designer",
@@ -58,7 +58,7 @@ class TestimonialsSeeder extends Seeder
             [
                 "span" => "‘​‌‘​‌",
                 "p" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "photo" => "img/avatar/01.jpg",
+                "photo" => "01.jpg",
                 "name" => "jacobs",
                 "firstname" => "Violette",
                 "fonction" => "Full-stack Dev",

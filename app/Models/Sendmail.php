@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mockery\Matcher\Subset;
 
-class Service extends Model
+class Sendmail extends Model
 {
     use HasFactory;
-    public function icons(){
-        return $this->belongsTo(Icon::class, "icon_id");
+    public function subjects(){
+        return $this->belongsTo(Subject::class, "subject_id");
     }
 }

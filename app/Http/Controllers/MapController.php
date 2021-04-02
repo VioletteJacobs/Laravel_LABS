@@ -57,7 +57,8 @@ class MapController extends Controller
      */
     public function edit(Map $map)
     {
-        //
+        $edit = $map;
+        return view("pages.back.edit.contact.editMap", compact("edit"));
     }
 
     /**
@@ -69,7 +70,17 @@ class MapController extends Controller
      */
     public function update(Request $request, Map $map)
     {
-        //
+        $validation = $request->validate([
+            "address" => 'required',
+
+        ]);
+
+        $update = $map;
+        $update->address = $request->address;
+
+
+        $update->save();
+        return redirect("/contactB");
     }
 
     /**

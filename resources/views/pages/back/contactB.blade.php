@@ -27,6 +27,28 @@
             </tbody>
         </table>
     </section>
+
+    <section class="mt-5" >
+      <h1 class="m-5 text-center" style="color: #CBAACB">Modifier la carte : </h1>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Adresse</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+
+              <tr>
+                <td>{{$map->address}}</td>
+                <td>
+                  <a href="/map/{{$map->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
+                </td>
+              </tr>
+          </tbody>
+      </table>
+  </section>
+
     <section class="mt-5" >
         <h1 class="m-5 text-center" style="color: #CBAACB">Modifier vos adresses : </h1>
         <table class="table">

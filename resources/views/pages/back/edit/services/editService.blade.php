@@ -20,9 +20,22 @@
                 <label for="">Titre : </label>
                 <input type="text" name="title" value="{{old("title")? old("title") : $edit->title}}">
             </div>
+
             <div class="from-group">
-                <label for="">Icon: </label>
-                <input type="text" name="icon" value="{{old("icon")? old("icon") : $edit->icon}}">
+                <div class="row d-flex">
+                    @foreach ($icon as $item)
+    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" aria-label="Checkbox for following text input" name="icon">
+                            <i class="{{$item->name}}" name="icon" value="icon"></i>
+                        </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
             </div>
             <div class="from-group">
                 <label for="">Paragraphe : </label>

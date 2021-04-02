@@ -13,17 +13,17 @@
             @endif
     
     
-        <form action="/testimonial/{{$edit->id}}" method="POST">
+        <form action="/testimonial/{{$edit->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method("PATCH")
             <div class="from-group">
                 <label for="">Commentaire: </label>
                 <input type="text" name="p" value="{{old("p")? old("p") : $edit->p}}">
             </div>
-            {{-- <div class="from-group">
+            <div class="from-group">
                 <label for=""> Photo: </label>
-                <input type="text" name="photo" value="{{old("photo")? old("photo") : $edit->photo}}">
-            </div> --}}
+                <input type="file" name="photo" value="{{old("photo")? old("photo") : $edit->photo}}">
+            </div>
             <div class="from-group">
                 <label for="">Nom : </label>
                 <input type="text" name="name" value="{{old("name")? old("name") : $edit->name}}">

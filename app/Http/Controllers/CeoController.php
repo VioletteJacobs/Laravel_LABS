@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ceo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CeoController extends Controller
 {
@@ -71,13 +72,15 @@ class CeoController extends Controller
     public function update(Request $request, Ceo $ceo)
     {
         $validation = $request->validate([
-		    // "photo" => 'required |min:2|max:300',
+		    "photo" => 'required |min:2|max:300',
             "name" => 'required|min:2|max:50',
             "firstname" => 'required|min:2|max:50',
             "fonction" => 'required|min:2|max:50',
 
         ]);
         $update = $ceo;
+        Storage::delete("public/img/team/".$update->photo);
+        Storage::put("public/img/team", $request->photo);
         $update->photo = $request->photo;
         $update->name = $request->name;
         $update->firstname = $request->firstname;
