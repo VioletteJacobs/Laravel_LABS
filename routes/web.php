@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutwelcomeController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CardwelcomeController;
 use App\Http\Controllers\CarrouselController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CeoController;
 use App\Http\Controllers\ContactsectionController;
 use App\Http\Controllers\EmailController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReadyController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\TitresserviceController;
@@ -27,6 +29,7 @@ use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
 use App\Models\Carrousel;
+use App\Models\Category;
 use App\Models\Ceo;
 use App\Models\Contactsection;
 use App\Models\Email;
@@ -42,17 +45,20 @@ use App\Models\Map;
 use App\Models\Navbar;
 use App\Models\Newsletter;
 use App\Models\Phone;
+use App\Models\Post;
 use App\Models\Ready;
 use App\Models\Service;
 use App\Models\Servicenew;
 use App\Models\Serviceswelcome;
 use App\Models\Servicevip;
 use App\Models\Subject;
+use App\Models\Tag;
 use App\Models\Team;
 use App\Models\Testimonials;
 use App\Models\Titresservice;
 use App\Models\Titreswelcome;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,7 +91,8 @@ Route::get('/', function () {
     $team = Team::all();
     $Ceo = Ceo::all();
 
-    $testimonials = Testimonials::all();
+    // $testimonials = Testimonials::all();
+    $testimonials = DB::table("testimonials")->orderBy("id", "desc")->limit(6)->get();
     $newsletter = Newsletter::first();
 
     $subject= Subject::all();
@@ -110,8 +117,10 @@ Route::get('/services', function () {
     $introService = Introservice::all();
     $titresService =Titresservice::all();
     $services = Service::all();
+    
 
     $formContact = Formcontact::first();
+    $subject= Subject::all();
     $contactSection = Contactsection::all();
     $address = Address::all();
     $phone = Phone::all();
@@ -119,7 +128,7 @@ Route::get('/services', function () {
 
     $newsletter = Newsletter::first();
     $footer = Footer::first();
-    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "services","footer" , "contactSection", "address", "phone", "email","newsletter", "footer"));
+    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "services","footer" , "contactSection", "address", "phone", "subject", "email","newsletter", "footer"));
 });
 
 
@@ -130,10 +139,15 @@ Route::get('/blog', function () {
 
     $intro = Introblog::all();
 
+    $category = Category::all();
+    $tag = Tag::all();
+    $post = Post::all();
+
+
     $newsletter = Newsletter::first();
     $footer = Footer::first();
 
-    return view('pages.front.blog', compact("loader", "nav", "logo","intro","newsletter","footer"));
+    return view('pages.front.blog', compact("loader", "nav", "logo","intro","category", "tag", "post", "newsletter","footer"));
 });
 
 
@@ -171,11 +185,12 @@ Route::get('/welcomeB', function () {
     $about = Aboutwelcome::all();
     
     $team = Team::all();
-    $Ceo = Ceo::all();
+    // $Ceo = Team->where("fonction" = "Ceo")->get();
     $teamRight = $team->shuffle();
     $teamLeft =$team->shuffle();
     
     $testimonials = Testimonials::all();
+    
     
     $newsletter = Newsletter::first();
     
@@ -185,7 +200,7 @@ Route::get('/welcomeB', function () {
     $footer = Footer::first();
     
     
-    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "teamRight", "teamLeft", "testimonials", "titrewelcome", "newsletter",  "footer"));
+    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "teamRight", "teamLeft", "testimonials", "titrewelcome", "newsletter",  "footer"));
 });
 
 Route::get("/contactB", function(){
@@ -222,10 +237,14 @@ Route::get("/serviceB", function(){
 });
 
 Route::get("/blogB", function(){
+
+    $category = Category::all();
+    $tag = Tag::all();
+    $post = Post::all();
     
     
     
-    return view("pages.back.blogB", compact("introService", "titresService", "services"));
+    return view("pages.back.blogB", compact("category", "tag", "post"));
 });
 
 Route::get("/contactB", function(){
@@ -264,7 +283,9 @@ Route::resource('titresService', TitresserviceController ::class);
 Route::resource('introervice', IntroserviceController ::class);
 
 
-route::resource("post", PostController::class);
+Route::resource("post", PostController::class);
+Route::resource("category", CategoryController::class);
+Route::resource("tag", TagController::class);
 
 
 Route::resource('introcontact', IntrocontactController ::class);

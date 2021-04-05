@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag_post;
+use App\Models\Post_tag;
 use Illuminate\Http\Request;
 
-class TagPostController extends Controller
+class PostTagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TagPostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tag_post  $tag_post
+     * @param  \App\Models\Post_tag  $post_tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag_post $tag_post)
+    public function show(Post_tag $post_tag)
     {
         //
     }
@@ -52,10 +52,10 @@ class TagPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tag_post  $tag_post
+     * @param  \App\Models\Post_tag  $post_tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag_post $tag_post)
+    public function edit(Post_tag $post_tag)
     {
         //
     }
@@ -64,10 +64,10 @@ class TagPostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tag_post  $tag_post
+     * @param  \App\Models\Post_tag  $post_tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag_post $tag_post)
+    public function update(Request $request, Post_tag $post_tag)
     {
         //
     }
@@ -75,10 +75,10 @@ class TagPostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tag_post  $tag_post
+     * @param  \App\Models\Post_tag  $post_tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag_post $tag_post)
+    public function destroy(Post_tag $post_tag)
     {
         //
     }

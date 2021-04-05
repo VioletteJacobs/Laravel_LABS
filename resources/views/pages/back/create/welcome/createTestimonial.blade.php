@@ -20,10 +20,10 @@
                 <label for="">Commentaire: </label>
                 <input type="text" name="p" value="{{old("p")}}">
             </div>
-            {{-- <div class="from-group">
+            <div class="from-group">
                 <label for=""> Photo: </label>
-                <input type="text" name="photo" value="{{old("photo"}}">
-            </div> --}}
+                <input type="file" name="photo" value="photo">
+            </div>
             <div class="from-group">
                 <label for="">Nom : </label>
                 <input type="text" name="name" value="{{old("name")}}">

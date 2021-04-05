@@ -53,7 +53,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             PostSeeder::class,
             CommentSeeder::class,
-            TagPostSeeder::class,
+            PostTagSeeder::class,
+
 
             // blade services
             TitresserviceSeeder::class,

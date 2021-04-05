@@ -122,7 +122,7 @@
           @endforeach
       </tbody>
   </table>
-  <a href="/testimonial/create" style="background-color: rgb(44, 230, 171)">Ajouter un témoignage</a>
+  <a href="/testimonial/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter un témoignage</a>
 </section>
 
 
@@ -161,7 +161,7 @@
           @endforeach
       </tbody>
   </table>
-  <a href="/team/create" style="background-color: rgb(44, 230, 171)">Ajouter une membre à l'équipe</a>
+  <a href="/team/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter une membre à l'équipe</a>
 </section>
 
 <section class="mt-5">
@@ -192,7 +192,7 @@
   </table>
 </section>
 
-<section class="mt-5">
+{{-- <section class="mt-5">
   <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le Call to Action: </h1>
   <table class="table">
       <thead>
@@ -218,7 +218,7 @@
           @endforeach
       </tbody>
   </table>
-</section>
+</section> --}}
 
 </div>
     

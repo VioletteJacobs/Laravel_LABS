@@ -290,10 +290,7 @@ return [
                     'text' => 'Témoignages',
                     'url'  => '/welcomeB',
                 ],
-                // [
-                    //     'text' => 'Services',
-                    //     'url'  => '/welcomeB',
-                    // ],
+
                     [
                         'text' => 'Team',
                         'url'  => '/welcomeB',
@@ -318,12 +315,25 @@ return [
                     ],
                 ],
             ],
-            
             [
-                'text' => 'Blog',
-                'url'  => '/blogB',
-                'icon' => 'fas fa-tools',
+                'text'    => 'Blog',
+                'icon'    => 'fas fa-tools',
+                'submenu' => [
+                    [
+                        'text' => 'Categories',
+                        'url'  => '/blogB',
+                    ],
+                    [
+                        'text' => 'Tags',
+                        'url'  => '/blogB',
+                    ],
+                    [
+                        'text' => 'Articles',
+                        'url'  => '/blogB',
+                    ],
+                ],
             ],
+            
             [
                 'text'    => 'Contact',
             'icon'    => 'fas fa-tools',
@@ -359,7 +369,7 @@ return [
         [
             'text'       => 'Utilisatrices',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url'        => '/userB',
         ],
 
     ],

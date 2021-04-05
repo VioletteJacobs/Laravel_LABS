@@ -63,6 +63,14 @@ class TestimonialsSeeder extends Seeder
                 "firstname" => "Violette",
                 "fonction" => "Full-stack Dev",
             ],
+            [
+                "span" => "‘​‌‘​‌",
+                "p" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
+                "photo" => "01.jpg",
+                "name" => "jacobs",
+                "firstname" => "Violetta",
+                "fonction" => "Full-stack Dev",
+            ],
         ]);
     }
 }
