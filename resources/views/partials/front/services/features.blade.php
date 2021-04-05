@@ -3,7 +3,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="section-title">
-            <h2>{{$titresService[1]->title}}</h2>
+            <h2>{{$titresService[1]->title}} features</h2>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 features">
@@ -18,7 +18,7 @@
                         <p>{{$item->p}}</p>
                     </div>
                     <div class="icon">
-                        <i class="{{$item->icon}}"></i>
+                        <i class="{{$item->icons->name}}"></i>
                     </div>
                 </div>
                 <?php $i++; ?>
@@ -32,6 +32,9 @@
                     <img src="img/device.png" alt="">
                 </div>
             </div>
+
+
+
             <div class="row">
                 <div class="col-md-4 col-sm-4 features">
                 <?php $i=0; ?>
@@ -41,11 +44,11 @@
                 <!-- feature item -->
                     <div class="icon-box light left">
                         <div class="service-text">
-                            <h2>{{$item->title}}</h2>
+                            <h2>{{$item->title}} </h2>
                             <p>{{$item->p}}</p>
                         </div>
                         <div class="icon">
-                            <i class="{{$item->icon}}"></i>
+                            <i class="{{$item->icons->name}}"></i>
                         </div>
                     </div>
                     <?php $i++; ?>

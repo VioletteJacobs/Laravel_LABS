@@ -116,7 +116,7 @@ Route::get('/services', function () {
 
     $introService = Introservice::all();
     $titresService =Titresservice::all();
-    $services = Service::all();
+    $services = Service::orderBy("id", "DESC")->paginate(9);
     
 
     $formContact = Formcontact::first();
@@ -141,13 +141,31 @@ Route::get('/blog', function () {
 
     $category = Category::all();
     $tag = Tag::all();
-    $post = Post::all();
+    $post = Post::orderBy("id", "DESC")->paginate(3);
 
 
     $newsletter = Newsletter::first();
     $footer = Footer::first();
 
     return view('pages.front.blog', compact("loader", "nav", "logo","intro","category", "tag", "post", "newsletter","footer"));
+});
+
+Route::get('/post/{$id}', function () {
+    $loader = Loader::all();
+    $nav = Navbar::all();
+    $logo = logo::first();
+
+    $intro = Introblog::all();
+
+    $category = Category::all();
+    $tag = Tag::all();
+    $post = Post::all();
+
+
+    $newsletter = Newsletter::first();
+    $footer = Footer::first();
+
+    return view('pages.front.blogpost', compact("loader", "nav", "logo","intro","category", "tag", "post", "newsletter","footer"));
 });
 
 

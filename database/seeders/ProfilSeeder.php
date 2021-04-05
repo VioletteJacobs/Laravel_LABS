@@ -33,7 +33,7 @@ class ProfilSeeder extends Seeder
                 "fonction_id" => 2,
                 "password" => Hash::make("password"),
                 "role_id" => 2,
-                "photo" => "/team/01.jpeg",
+                "photo" => "01.jpeg",
                 "check" => 0
             ],
             [
@@ -43,7 +43,7 @@ class ProfilSeeder extends Seeder
                 "fonction_id" => 3,
                 "password" => Hash::make("password"),
                 "role_id" => 3,
-                "photo" => "/team/01.jpeg",
+                "photo" => "01.jpeg",
                 "check" => 1
             ],
             [
@@ -53,7 +53,7 @@ class ProfilSeeder extends Seeder
                 "fonction_id" => 4,
                 "password" => Hash::make("password"),
                 "role_id" => 3,
-                "photo" => "/team/01.jpeg",
+                "photo" => "01.jpeg",
                 "check" => 1
             ],
             [
@@ -63,7 +63,7 @@ class ProfilSeeder extends Seeder
                 "fonction_id" => 4,
                 "password" => Hash::make("password"),
                 "role_id" => 3,
-                "photo" => "/team/01.jpeg",
+                "photo" => "01.jpeg",
                 "check" => 1
             ],
         ]);

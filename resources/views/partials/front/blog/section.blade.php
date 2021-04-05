@@ -21,47 +21,24 @@
 								<a href="">Design, Inspiration</a>
 								<a href="">2 Comments</a>
 							</div>
-							<p>{{$item->content}}</p>
-							<a href="blog-post.html" class="read-more">Read More</a>
+							<p>{{Str::limit($item->content, 350)}} ... </p>
+							<a href="/post/{{$item->id}}" class="read-more">Read More</a>
 						</div>
 					</div>
 					@endforeach
 
 					<!-- Pagination -->
 					<div class="page-pagination">
-						<a class="active" href="">01.</a>
-						<a href="">02.</a>
-						<a href="">03.</a>
+						{{$post->fragment('posts')->links('vendor.pagination.bootstrap-4') }}
 					</div>
 				</div>
 				<!-- Sidebar area -->
 				<div class="col-md-4 col-sm-5 sidebar">
-					<!-- Single widget -->
-					<div class="widget-item">
-						<form action="#" class="search-form">
-							<input type="text" placeholder="Search">
-							<button class="search-btn"><i class="flaticon-026-search"></i></button>
-						</form>
-					</div>
-					<!-- Single widget -->
-					<div class="widget-item">
-						<h2 class="widget-title">Categories</h2>
-						<ul>
-							@foreach ($category->shuffle() as $item)
-							<li><a href="#">{{$item->category}}</a></li>
-							@endforeach
-						</ul>
-					</div>
-					<!-- Single widget -->
-					<div class="widget-item">
-						<h2 class="widget-title">Tags</h2>
-						<ul class="tag">
-							@foreach ($tag->shuffle() as $item)
-							<li><a href="">{{$item->tag}}</a></li>
-							@endforeach
 
-						</ul>
-					</div>
+					@include('partials.front.blog.search')
+					@include('partials.front.blog.category')
+					@include('partials.front.blog.tags')
+					
 				</div>
 			</div>
 		</div>

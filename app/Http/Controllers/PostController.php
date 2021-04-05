@@ -2,7 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Newsletter;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Footer;
+use App\Models\Introblog;
+use App\Models\Loader;
+use App\Models\logo;
+use App\Models\Navbar;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -46,7 +55,23 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $show = $post;
+
+        $loader = Loader::all();
+        $nav = Navbar::all();
+        $logo = logo::first();
+    
+        $intro = Introblog::all();
+    
+        $category = Category::all();
+        $tag = Tag::all();
+        $post = Post::all();
+        $comments = Comment::where("check", 1)->get();
+    
+    
+        // $newsletter = Newsletter::first();
+        $footer = Footer::first();
+        return view ("pages.front.blogpost", compact("show", "loader", "nav", "logo", "intro", "category", "tag", "post", "comments", "footer",));
     }
 
     /**
