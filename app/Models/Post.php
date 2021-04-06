@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     public function tags(){
-        return $this->belongsToMany(Tag::class,  "tag_post");
+        return $this->belongsToMany(Tag::class);
     }
     public function comments(){
         return $this->hasMany(Comment::class, "post_id");
