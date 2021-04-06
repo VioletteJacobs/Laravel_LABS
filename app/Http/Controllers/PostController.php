@@ -66,12 +66,14 @@ class PostController extends Controller
         $category = Category::all();
         $tag = Tag::all();
         $post = Post::all();
-        $comments = Comment::where("check", 1)->get();
+        $comments = Comment::where("post_id", "=", $show->id)->get();
+        $commentsvalidate = $comments->where("check", "=", 1);
+        $nbrcomments = count($commentsvalidate);
     
-    
+
         // $newsletter = Newsletter::first();
         $footer = Footer::first();
-        return view ("pages.front.blogpost", compact("show", "loader", "nav", "logo", "intro", "category", "tag", "post", "comments", "footer",));
+        return view ("pages.front.blogpost", compact("show", "loader", "nav", "logo", "intro", "category", "tag", "post", "comments", "commentsvalidate", "nbrcomments", "footer"));
     }
 
     /**
@@ -106,5 +108,38 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function search(Request $request){
+
+        $loader = Loader::all();
+        $nav = Navbar::all();
+        $logo = logo::first();
+        $intro = Introblog::all();
+    
+        $category = Category::all();
+        $tag = Tag::all();
+        // $newsletter = Newsletter::first();
+        $footer = Footer::first();
+
+
+        $search = $request->input("search");
+        $posts = Post::query()->where('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->get();
+        return view('pages.front.search', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts'));
+    }
+    
+    public function filterc (Request $request){
+        $loader = Loader::all();
+        $nav = Navbar::all();
+        $logo = logo::first();
+        $intro = Introblog::all();
+    
+        $category = Category::all();
+        $tag = Tag::all();
+        $footer = Footer::first();
+
+        $posts = Post::where("category_id", $request->id );
+        
+        return view('pages.front.showCategory', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts'));
     }
 }

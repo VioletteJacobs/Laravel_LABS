@@ -19,13 +19,13 @@
 							<h2 class="post-title">{{$item->title}}</h2>
 							<div class="post-meta">
 								<a href="">{{$item->categories->category}}</a>
-								{{-- {{dd($item->tags->id)}} --}}
+
 
 								@foreach ($item->tags as $tage)
 								<a href="">{{$tage->tag }}</a>
 								@endforeach
 
-								<a href="">2 Comments</a>
+								<a href=""> Comments</a>
 							</div>
 							<p>{{Str::limit($item->content, 350)}} ... </p>
 							<a href="/post/{{$item->id}}" class="read-more">Read More</a>

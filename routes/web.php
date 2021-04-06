@@ -144,12 +144,15 @@ Route::get('/blog', function () {
     $category = Category::all();
     $tag = Tag::all();
     $post = Post::orderBy("id", "DESC")->paginate(3);
+    $comments = Comment::all();
+    $commentsvalidate = $comments->where("check", "=", 1);
+    $nbrcomments = count($commentsvalidate);
 
 
     $newsletter = Newsletter::first();
     $footer = Footer::first();
 
-    return view('pages.front.blog', compact("loader", "nav", "logo","intro","category", "tag", "post", "newsletter","footer"));
+    return view('pages.front.blog', compact("loader", "nav", "logo","intro","category", "tag", "post", "comments", "commentsvalidate", "nbrcomments", "newsletter","footer"));
 });
 
 Route::get('/post/{$id}', function () {
@@ -334,6 +337,10 @@ Route::post("/mail", [MailController::class, "store"]);
 
 // auth et adminLTE
 Auth::routes();
+
+// get blog
+Route::get("/search", [PostController::class, "search"]);
+Route::get("/filterc", [PostController::class, "filterC"]);
 
 Route::get('/home', function() {
     return view('home');
