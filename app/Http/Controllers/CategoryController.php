@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.blog.createCategory");
     }
 
     /**
@@ -35,7 +35,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "category" => 'required|min:2|max:50',
+
+        ]);
+        $store = new Category;
+        $store->category = $request->category;
+        $store->save();
+        return redirect("/blogB");
     }
 
     /**
@@ -57,7 +64,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $edit = $category;
+        return view("pages.back.edit.blog.editCategory", compact("edit"));
     }
 
     /**
@@ -69,7 +77,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validation = $request->validate([
+            "category" => 'required|min:2|max:50',
+
+        ]);
+        $update = $category;
+        $update->category = $request->category;
+        $update->save();
+        return redirect("/blogB");
+
     }
 
     /**
@@ -80,6 +96,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect("/blogB");
     }
 }

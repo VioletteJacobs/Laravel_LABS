@@ -14,6 +14,7 @@
 								<h3>{{$item->month}}</h3>
 							</div>
 						</div>
+
 						<div class="post-content">
 							<h2 class="post-title">{{$item->title}}</h2>
 							<div class="post-meta">

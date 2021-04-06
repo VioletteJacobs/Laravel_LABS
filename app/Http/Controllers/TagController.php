@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.back.create.blog.createTag");
     }
 
     /**
@@ -35,7 +35,14 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "tag" => 'required|min:2|max:50',
+
+        ]);
+        $store = new Tag;
+        $store->tag = $request->tag;
+        $store->save();
+        return redirect("/blogB");
     }
 
     /**
@@ -57,7 +64,8 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        $edit = $tag;
+        return view("pages.back.edit.blog.editTag", compact("edit"));
     }
 
     /**
@@ -69,7 +77,14 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $validation = $request->validate([
+            "tag" => 'required|min:2|max:50',
+
+        ]);
+        $update = $tag;
+        $update->tag = $request->tag;
+        $update->save();
+        return redirect("/blogB");
     }
 
     /**
@@ -80,6 +95,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect("/blogB");
     }
 }

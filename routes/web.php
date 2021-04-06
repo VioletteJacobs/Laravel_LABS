@@ -6,6 +6,7 @@ use App\Http\Controllers\CardwelcomeController;
 use App\Http\Controllers\CarrouselController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CeoController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactsectionController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FooterController;
@@ -31,6 +32,7 @@ use App\Models\Cardwelcome;
 use App\Models\Carrousel;
 use App\Models\Category;
 use App\Models\Ceo;
+use App\Models\Comment;
 use App\Models\Contactsection;
 use App\Models\Email;
 use App\Models\Footer;
@@ -316,12 +318,14 @@ Route::resource("address", AddressController::class);
 Route::resource("email", EmailController::class);
 Route::resource('phone', PhoneController::class);
 
-
-
-
-// utilisateurs + approbation par l'admin
-Route::get("/validate/{id}", [UserController::class, "validation"]);
 Route::resource("userB", UserController::class);
+Route::resource('commentB', CommentController::class);
+
+
+
+// approbation par l'admin
+Route::get("/validate/{id}", [UserController::class, "validation"]);
+Route::get("/validatecom/{id}", [CommentController::class, "validation"]);
 
 
 // mailing

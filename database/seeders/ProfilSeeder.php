@@ -33,6 +33,7 @@ class ProfilSeeder extends Seeder
                 "fonction_id" => 2,
                 "password" => Hash::make("password"),
                 "role_id" => 2,
+                "description" => "I love food, i'm part of the lab's team since 2 years & i love my job. I writte about marketing & social media. I love tiktok & red lipstick",
                 "photo" => "01.jpeg",
                 "check" => 0
             ],
@@ -44,6 +45,7 @@ class ProfilSeeder extends Seeder
                 "password" => Hash::make("password"),
                 "role_id" => 3,
                 "photo" => "01.jpeg",
+                "description" => "I love food, i'm part of the lab's team since 2 years & i love my job. I writte about marketing & social media. I love tiktok & red lipstick",
                 "check" => 1
             ],
             [
@@ -54,6 +56,7 @@ class ProfilSeeder extends Seeder
                 "password" => Hash::make("password"),
                 "role_id" => 3,
                 "photo" => "01.jpeg",
+                "description" => "I love food, i'm part of the lab's team since 2 years & i love my job. I writte about marketing & social media. I love tiktok & red lipstick",
                 "check" => 1
             ],
             [
@@ -64,6 +67,7 @@ class ProfilSeeder extends Seeder
                 "password" => Hash::make("password"),
                 "role_id" => 3,
                 "photo" => "01.jpeg",
+                "description" => "I love food, i'm part of the lab's team since 2 years & i love my job. I writte about marketing & social media. I love tiktok & red lipstick",
                 "check" => 1
             ],
         ]);

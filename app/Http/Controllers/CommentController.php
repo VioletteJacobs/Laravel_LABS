@@ -14,7 +14,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        $commentsValidate = $comments->where("check", 1);
+        return view("pages.back.commentB", compact("comments", "commentsValidate"));
     }
 
     /**
@@ -81,5 +83,13 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
+    }
+    public function validation($id)
+    {
+
+        $user = Comment::find($id);
+        $user->check = 1;
+        $user->save();
+        return redirect()->back();
     }
 }

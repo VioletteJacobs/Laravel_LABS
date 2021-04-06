@@ -371,6 +371,11 @@ return [
             'icon_color' => 'yellow',
             'url'        => '/userB',
         ],
+        [
+            'text'       => 'Commentaires',
+            'icon_color' => 'blue',
+            'url'        => '/commentB',
+        ],
 
     ],
 
