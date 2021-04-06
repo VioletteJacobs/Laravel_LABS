@@ -93,7 +93,7 @@ Route::get('/', function () {
     $team = Team::all();
     $Ceo = Ceo::all();
 
-    // $testimonials = Testimonials::all();
+
     $testimonials = DB::table("testimonials")->orderBy("id", "desc")->limit(6)->get();
     $newsletter = Newsletter::first();
 
@@ -119,6 +119,9 @@ Route::get('/services', function () {
     $introService = Introservice::all();
     $titresService =Titresservice::all();
     $services = Service::orderBy("id", "DESC")->paginate(9);
+    $lastservices =  DB::table("services")->orderBy("id", "desc")->limit(6)->get();
+
+    $posts = DB::table("posts")->orderBy("id", "desc")->limit(3)->get();
     
 
     $formContact = Formcontact::first();
@@ -130,7 +133,7 @@ Route::get('/services', function () {
 
     $newsletter = Newsletter::first();
     $footer = Footer::first();
-    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "services","footer" , "contactSection", "address", "phone", "subject", "email","newsletter", "footer"));
+    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "services", "lastservices", "posts", "footer" , "contactSection", "address", "phone", "subject", "email","newsletter", "footer"));
 });
 
 
@@ -208,7 +211,7 @@ Route::get('/welcomeB', function () {
     $about = Aboutwelcome::all();
     
     $team = Team::all();
-    // $Ceo = Team->where("fonction" = "Ceo")->get();
+    $Ceo = Team::where("fonction","Ceo")->get();
     $teamRight = $team->shuffle();
     $teamLeft =$team->shuffle();
     
@@ -341,6 +344,7 @@ Auth::routes();
 // get blog
 Route::get("/search", [PostController::class, "search"]);
 Route::get("/filterc/{id}", [PostController::class, "filterc"]);
+Route::get("/filtertag/{id}", [PostController::class, "filtertag"]);
 
 Route::get('/home', function() {
     return view('home');

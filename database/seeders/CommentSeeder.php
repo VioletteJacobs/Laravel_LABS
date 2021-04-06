@@ -18,7 +18,9 @@ class CommentSeeder extends Seeder
             [
                 "name" => "Prem",
                 "firstname" => "Antoine",
-                "photo" => "2.jpg",
+                "date" => "3 juillet 2021",
+                "email" => "lkjh@lgbj",
+                "photo" => "avatar/01.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",
                 "post_id" => 1,
                 "check" => 1
@@ -26,7 +28,9 @@ class CommentSeeder extends Seeder
             [
                 "name" => "Prem",
                 "firstname" => "Marie",
-                "photo" => "2.jpg",
+                "date" => "3 juillet 2021",
+                "email" => "lkjh@lgbj",
+                "photo" => "avatar/02.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",
                 "post_id" => 1,
                 "check" => 1
@@ -34,15 +38,19 @@ class CommentSeeder extends Seeder
             [
                 "name" => "Prem",
                 "firstname" => "Milla",
-                "photo" => "2.jpg",
+                "date" => "3 juillet 2021",
+                "email" => "lkjh@lgbj",
+                "photo" => "avatar/03.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",
                 "post_id" => 2,
                 "check" => 1
             ],
             [
                 "name" => "Prem",
-                "firstname" => "aaerf",
-                "photo" => "2.jpg",
+                "firstname" => "paul",
+                "date" => "3 juillet 2021",
+                "email" => "lkjh@lgbj",
+                "photo" => "avatar/02.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",
                 "post_id" => 2,
                 "check" => 0

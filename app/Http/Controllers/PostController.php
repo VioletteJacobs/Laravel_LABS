@@ -44,7 +44,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            "title" => "required|max:200",
+            "src" => "required|max:200",
+            "day" => "required|max:200",
+            "month" => "required|max:200",
+            "user_id" => "required|max:200",
+            "category_id" => "required|max:200",
+        ]);
     }
 
     /**
@@ -107,7 +114,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->back();
     }
 
     public function search(Request $request){
@@ -143,5 +151,22 @@ class PostController extends Controller
 
 
         return view('pages.front.showCategory', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts', "postsCategory"));
+    }
+    public function filtertag($id){
+        $loader = Loader::all();
+        $nav = Navbar::all();
+        $logo = logo::first();
+        $intro = Introblog::all();
+    
+        $category = Category::all();
+        $tag = Tag::all();
+        $footer = Footer::first();
+
+        $posts = Post::all();
+        // $postsTag = $posts->where($posts->tags->id);
+
+
+        return view('pages.front.showtag', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts'));
+
     }
 }

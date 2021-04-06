@@ -4,17 +4,16 @@
 <div class="page-section spad">
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
+                <div>
 
-                <h1 class="mt-5">Voici les résultats : </h1>
-                <div class="container">
-
-                    @foreach ($postsCategory as $post)
+                   <h1>Voici les résultats de votre recherche : </h1>
+                    {{-- @foreach ($posts->tags as $tage)
                         <div class="post-list">
-                            <p>{{ $post->title }}</p>
+                            <p>{{ $tage->tag }}</p>
                             <p>{{ $post->categories->category }}</p>
                             <p>{{Str::limit($post->content, 150)}} ... </p>
                         </div>
-                    @endforeach
+                    @endforeach --}}
 
                 </div>
 

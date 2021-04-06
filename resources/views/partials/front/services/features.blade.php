@@ -8,9 +8,10 @@
         <div class="row">
             <div class="col-md-4 col-sm-4 features">
                 <?php $i=0; ?>
-            @foreach ($services->shuffle() as $item)
+            @foreach ($lastservices as $item)
+            
             @if ($i<3)
-                
+
             <!-- feature item -->
                 <div class="icon-box light left">
                     <div class="service-text">
@@ -18,7 +19,7 @@
                         <p>{{$item->p}}</p>
                     </div>
                     <div class="icon">
-                        <i class="{{$item->icons->name}}"></i>
+                        <i class="{{$item->icon_id}}"></i>
                     </div>
                 </div>
                 <?php $i++; ?>
@@ -34,7 +35,7 @@
             </div>
 
 
-
+{{-- 
             <div class="row">
                 <div class="col-md-4 col-sm-4 features">
                 <?php $i=0; ?>
@@ -43,12 +44,12 @@
                     
                 <!-- feature item -->
                     <div class="icon-box light left">
+                        <div class="icon">
+                            <i class="{{$item->icons->name}}"></i>
+                        </div>
                         <div class="service-text">
                             <h2>{{$item->title}} </h2>
                             <p>{{$item->p}}</p>
-                        </div>
-                        <div class="icon">
-                            <i class="{{$item->icons->name}}"></i>
                         </div>
                     </div>
                     <?php $i++; ?>
@@ -56,7 +57,7 @@
                 @endforeach
     
                 </div>
-                
+                 --}}
         </div>
         <div class="text-center mt100">
             <a href="/blog" class="site-btn">Browse</a>

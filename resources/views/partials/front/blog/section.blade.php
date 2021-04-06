@@ -8,7 +8,7 @@
 					@foreach ($post as $item)
 					<div class="post-item">
 						<div class="post-thumbnail">
-							<img src="img/blog/blog-2.jpg" alt="">
+							<img src="{{asset("storage/img/".$item->src)}}" alt="">
 							<div class="post-date">
 								<h2>{{$item->day}}</h2>
 								<h3>{{$item->month}}</h3>

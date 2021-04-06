@@ -38,22 +38,22 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        $store = new Comment;
+
         if(Auth::check()){
-            $store = new Comment;
-            $store->article_id = $request->name;
-            $store->email = $request->email;
-            $store->content = $request->content;
-            $store->date = date("j F, Y");
+            $store->name = Auth::user()->name.' '. Auth::user()->surname;
+            $store->email = Auth::user()->email;
             $store->photo = Auth::user()->photo;
             
         } else {
-            $store = new Comment;
-            $store->article_id = $request->name;
+            $store->name = $request->name;
             $store->email = $request->email;
-            $store->content = $request->content;
-            $store->date = date("j F, Y");
-            $store->photo = "/avatar/user.jpeg";
+            // $store->photo = ;
         }
+        $store->content = $request->content;
+        $store->date = "12/01/1995";
+        $store->check = 0;
+        return redirect()->back();
 
     }
 
@@ -99,8 +99,11 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $destroy = $comment;
+        $destroy->delete();
+        return redirect("/commentB");
     }
+    
     public function validation($id)
     {
 
