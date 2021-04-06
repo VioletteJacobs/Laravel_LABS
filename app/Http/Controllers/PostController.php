@@ -128,7 +128,7 @@ class PostController extends Controller
         return view('pages.front.search', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts'));
     }
     
-    public function filterc (Request $request){
+    public function filterc ($id){
         $loader = Loader::all();
         $nav = Navbar::all();
         $logo = logo::first();
@@ -138,8 +138,10 @@ class PostController extends Controller
         $tag = Tag::all();
         $footer = Footer::first();
 
-        $posts = Post::where("category_id", $request->id );
-        
-        return view('pages.front.showCategory', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts'));
+        $posts = Post::all();
+        $postsCategory = $posts->where("category_id", $id);
+
+
+        return view('pages.front.showCategory', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts', "postsCategory"));
     }
 }

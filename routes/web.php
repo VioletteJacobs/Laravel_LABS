@@ -340,7 +340,7 @@ Auth::routes();
 
 // get blog
 Route::get("/search", [PostController::class, "search"]);
-Route::get("/filterc", [PostController::class, "filterC"]);
+Route::get("/filterc/{id}", [PostController::class, "filterc"]);
 
 Route::get('/home', function() {
     return view('home');

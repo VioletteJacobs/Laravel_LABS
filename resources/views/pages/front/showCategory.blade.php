@@ -11,10 +11,10 @@
                 
                 
 
-                    @foreach ($posts as $post)
-                    {{dd($post)}}
+                    @foreach ($postsCategory as $post)
                         <div class="post-list">
                             <p>{{ $post->title }}</p>
+                            <p>{{ $post->categories->category }}</p>
                             <p>{{Str::limit($post->content, 150)}} ... </p>
                         </div>
                     @endforeach
