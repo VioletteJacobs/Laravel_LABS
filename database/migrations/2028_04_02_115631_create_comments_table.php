@@ -17,12 +17,11 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("firstname");
-            $table->string("photo");
+            $table->string("photo")->nullable();
             $table->text("content");
             $table->string("email");
-            $table->string("date");
             $table->unsignedBigInteger("post_id");
-            $table->foreign("post_id")->references("id")->on("posts")->onDelete("cascade");
+            $table->foreign("post_id")->references("id")->on("posts")->onDelete("cascade")->nullable();
             $table->integer("check");
             $table->timestamps();
         });

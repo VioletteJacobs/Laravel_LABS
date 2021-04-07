@@ -10,8 +10,18 @@
 						<div class="post-thumbnail">
 							<img src="{{asset("storage/img/".$item->src)}}" alt="">
 							<div class="post-date">
-								<h2>{{$item->day}}</h2>
-								<h3>{{$item->month}}</h3>
+
+								@if ($item->created_at == NULL)
+								
+								<h2>12</h2>
+								<h3>January 1995</h3>
+									
+								@else
+									
+								<h2>{{$item->created_at->format("d")}}</h2>
+								<h3>{{$item->created_at->format("m y")}}</h3>
+									
+								@endif
 							</div>
 						</div>
 
@@ -25,7 +35,7 @@
 								<a href="">{{$tage->tag }}</a>
 								@endforeach
 
-								<a href=""> Comments</a>
+								{{-- <a href="">  {{$nbrcomments}} Comments</a> --}}
 							</div>
 							<p>{{Str::limit($item->content, 350)}} ... </p>
 							<a href="/post/{{$item->id}}" class="read-more">Read More</a>

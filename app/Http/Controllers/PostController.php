@@ -13,6 +13,7 @@ use App\Models\Navbar;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Foreach_;
 
 class PostController extends Controller
 {
@@ -47,8 +48,7 @@ class PostController extends Controller
         $validate = $request->validate([
             "title" => "required|max:200",
             "src" => "required|max:200",
-            "day" => "required|max:200",
-            "month" => "required|max:200",
+            "content" => "required",
             "user_id" => "required|max:200",
             "category_id" => "required|max:200",
         ]);
@@ -73,6 +73,7 @@ class PostController extends Controller
         $category = Category::all();
         $tag = Tag::all();
         $post = Post::all();
+        
         $comments = Comment::where("post_id", "=", $show->id)->get();
         $commentsvalidate = $comments->where("check", "=", 1);
         $nbrcomments = count($commentsvalidate);
@@ -91,7 +92,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $edit = $post;
+        $tag = Tag::all();
+        return view("pages.back.edit.blog.editPost", compact("edit", "tag"));
     }
 
     /**
@@ -103,7 +106,28 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validation = $request->validate([
+		    "src" => 'required |min:2|max:100',
+            "title" => 'required|min:2|max:100',
+            "content" => 'required|min:2|max:500',
+            "category_id" => 'required|min:2|max:500',
+
+        ]);
+
+        $tag = Tag::all();
+
+        $update = $post;
+        $update->title = $request->title;
+        $update->src = $request->src;
+        $update->content = $request->content;
+        
+        $update->save();
+
+        foreach ($tag as $item) {
+            $item
+            
+        }
+        return redirect("/blogB");
     }
 
     /**
@@ -163,10 +187,19 @@ class PostController extends Controller
         $footer = Footer::first();
 
         $posts = Post::all();
+        $postarray = [];
+        $tagarray = [];
+        foreach($posts as $item){
+            $tagarray = $item->tags->pluck("id")->toArray();
+            if(in_array($id, $tagarray)){
+                array_push($postarray, $item);
+            }
+            unset($tagarray);
+        }
         // $postsTag = $posts->where($posts->tags->id);
 
 
-        return view('pages.front.showtag', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts'));
+        return view('pages.front.showtag', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'postarray'));
 
     }
 }

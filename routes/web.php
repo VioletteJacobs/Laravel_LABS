@@ -26,6 +26,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\TitresserviceController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
@@ -76,38 +77,39 @@ use Illuminate\Support\Facades\Route;
 
 
 // blade
-Route::get('/', function () {
+// Route::get('/', function () {
 
-    $loader = Loader::all();
-    $nav = Navbar::all();
-    $carrousel = Carrousel::all();
-    $cardwelcome = Cardwelcome::all();
-    $carrousel = Carrousel::all();
-    $logo = logo::first();
-    $titrewelcome = Titreswelcome::all();
-    $services = Service::all();
+//     $loader = Loader::all();
+//     $nav = Navbar::all();
+//     $carrousel = Carrousel::all();
+//     $cardwelcome = Cardwelcome::all();
+//     $carrousel = Carrousel::all();
+//     $logo = logo::first();
+//     $titrewelcome = Titreswelcome::all();
+//     $services = Service::all();
 
-    $carrousel = Carrousel::all();
-    $about = Aboutwelcome::all();
+//     $carrousel = Carrousel::all();
+//     $about = Aboutwelcome::all();
 
-    $team = Team::all();
-    $Ceo = Ceo::all();
-
-
-    $testimonials = DB::table("testimonials")->orderBy("id", "desc")->limit(6)->get();
-    $newsletter = Newsletter::first();
-
-    $subject= Subject::all();
-    $contactSection = Contactsection::all();
-    $address = Address::all();
-    $phone = Phone::all();
-    $email = Email::all();
-
-    $footer = Footer::first();
+//     $team = Team::all();
+//     $Ceo = Ceo::all();
 
 
-    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "testimonials", "titrewelcome", "newsletter", "contactSection", "subject", "address", "phone", "email", "footer"));
-});
+//     $testimonials = DB::table("testimonials")->orderBy("id", "desc")->limit(6)->get();
+//     $newsletter = Newsletter::first();
+
+//     $subject= Subject::all();
+//     $contactSection = Contactsection::all();
+//     $address = Address::all();
+//     $phone = Phone::all();
+//     $email = Email::all();
+
+//     $footer = Footer::first();
+
+
+//     return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "Ceo", "testimonials", "titrewelcome", "newsletter", "contactSection", "subject", "address", "phone", "email", "footer"));
+// });
+Route::resource("/", WelcomeController::class);
 
 
 Route::get('/services', function () {
@@ -119,8 +121,10 @@ Route::get('/services', function () {
     $introService = Introservice::all();
     $titresService =Titresservice::all();
     $services = Service::orderBy("id", "DESC")->paginate(9);
-    $lastservices =  DB::table("services")->orderBy("id", "desc")->limit(6)->get();
 
+    $lastservices =  Service::orderBy("id", "desc")->limit(6)->get();
+
+    
     $posts = DB::table("posts")->orderBy("id", "desc")->limit(3)->get();
     
 
@@ -213,7 +217,7 @@ Route::get('/welcomeB', function () {
     $team = Team::all();
     $Ceo = Team::where("fonction","Ceo")->get();
     $teamRight = $team->shuffle();
-    $teamLeft =$team->shuffle();
+    $teamLeft = $team->shuffle();
     
     $testimonials = Testimonials::all();
     

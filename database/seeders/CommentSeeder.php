@@ -18,7 +18,6 @@ class CommentSeeder extends Seeder
             [
                 "name" => "Prem",
                 "firstname" => "Antoine",
-                "date" => "3 juillet 2021",
                 "email" => "lkjh@lgbj",
                 "photo" => "avatar/01.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",
@@ -28,7 +27,6 @@ class CommentSeeder extends Seeder
             [
                 "name" => "Prem",
                 "firstname" => "Marie",
-                "date" => "3 juillet 2021",
                 "email" => "lkjh@lgbj",
                 "photo" => "avatar/02.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",
@@ -38,7 +36,6 @@ class CommentSeeder extends Seeder
             [
                 "name" => "Prem",
                 "firstname" => "Milla",
-                "date" => "3 juillet 2021",
                 "email" => "lkjh@lgbj",
                 "photo" => "avatar/03.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",
@@ -48,7 +45,6 @@ class CommentSeeder extends Seeder
             [
                 "name" => "Prem",
                 "firstname" => "paul",
-                "date" => "3 juillet 2021",
                 "email" => "lkjh@lgbj",
                 "photo" => "avatar/02.jpg",
                 "content" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ipsa recusandae, distinctio tempora velit provident. Natus, accusantium deleniti reiciendis dicta et quis eius adipisci esse a, provident.",

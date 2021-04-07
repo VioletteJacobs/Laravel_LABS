@@ -38,21 +38,36 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        // $validate = $request->validate([
+        //     "name" => "required|max:200",
+        //     "firstname" => "required|max:200",
+        //     "email" => "required|max:200",
+        //     "content" => "required|max:200",
+        //     "post_id" => "required|max:200",
+        // ]);
+        
         $store = new Comment;
+        $postid = explode("/", url()->previous());
 
         if(Auth::check()){
-            $store->name = Auth::user()->name.' '. Auth::user()->surname;
+            $store->name = Auth::user()->name;
+            $store->firstname = Auth::user()->firstname;
             $store->email = Auth::user()->email;
             $store->photo = Auth::user()->photo;
             
         } else {
             $store->name = $request->name;
+            $store->firstname = $request->firstname;
             $store->email = $request->email;
-            // $store->photo = ;
+            $request->photo = "/blog/user.jpeg";
         }
+
         $store->content = $request->content;
-        $store->date = "12/01/1995";
+        $store->post_id = end($postid);
+
         $store->check = 0;
+        $store->save();
+
         return redirect()->back();
 
     }

@@ -9,10 +9,16 @@
 					<div class="single-post">
 						<div class="post-thumbnail">
 
-							<img src="{{asset('storage/img/blog/'.$show->src)}}" alt="">
+							<img src="{{asset("storage/img/".$show->src)}}" alt="">
 							<div class="post-date">
-								<h2>{{$show->day}}</h2>
-								<h3>{{$show->month}}</h3>
+								@if ($show->created_at == NULL)
+								<h2>12</h2>
+								<h3>January 1995</h3>
+								@else
+								<h2>{{$show->created_at->foramt("d")}}</h2>
+								<h3>{{$show->created_at->foramt("m Y")}}</h3>
+									
+								@endif
 							</div>
 						</div>
 						<div class="post-content">
@@ -52,10 +58,22 @@
 								@foreach ($commentsvalidate as $item)
 								<li>
 									<div class="avatar">
-										<img src="{{asset("storage/img/team/". $item->photo)}}" alt="">
+										@if (Auth::check())
+										<img src="{{asset('storage/img/'.$item->photo)}}" alt="">
+
+										@else
+										<img src="{{asset('storage/img/blog/user.jpeg')}}" alt="">
+
+										@endif
 									</div>
 									<div class="commetn-text">
-										<h3>{{$item->firstname}} {{$item->name}} | 03 nov, 2017 | Reply</h3>
+
+										@if ($item->created_at == NULL)
+										<h3>{{$item->firstname}} {{$item->name}} | 12 janvier, 1995 </h3>
+										@else
+										<h3>{{$item->firstname}} {{$item->name}} | {{$item->created_at->format( "d M, Y")}} </h3>
+										@endif
+
 										<p>{{$item->content}} </p>
 									</div>
 								</li>
@@ -69,18 +87,25 @@
 						<div class="row">
 							<div class="col-md-9 comment-from">
 								<h2>Leave a comment</h2>
-								<form class="form-class">
+								<form class="form-class" action="/commentB" method="POST">
+									@csrf
 									<div class="row">
+										@if (!Auth::check())
 										<div class="col-sm-6">
-											<input type="text" name="name" placeholder="Your name">
+											<input type="text" name="name" value="{{old("name")}}" placeholder="Your name">
 										</div>
 										<div class="col-sm-6">
-											<input type="text" name="email" placeholder="Your email">
+											<input type="text" name="firstname"  value="{{old("firstname")}}" placeholder="Your firstname">
 										</div>
+										<div class="col-sm-6">
+											<input type="text" name="email"  value="{{old("email")}}" placeholder="Your email">
+										</div>
+											
+										@endif
+
 										<div class="col-sm-12">
-											<input type="text" name="subject" placeholder="Subject">
-											<textarea name="message" placeholder="Message"></textarea>
-											<button class="site-btn">send</button>
+											<textarea name="content" value="{{old("content")}}" placeholder="Message"></textarea>
+											<button class="site-btn" type="submit">send</button>
 										</div>
 									</div>
 								</form>

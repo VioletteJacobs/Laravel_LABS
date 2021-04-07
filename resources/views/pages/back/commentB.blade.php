@@ -10,6 +10,7 @@
                 <th scope="col">Prénom: </th>
                 <th scope="col">Email : </th>
                 <th scope="col">Commentaire : </th>
+                <th scope="col">Titre du post : </th>
                 <th scope="col">Photo : </th>
               </tr>
             </thead>
@@ -20,6 +21,7 @@
                   <td>{{$item->name}}</td>
                   <td>{{$item->email}}</td>
                   <td>{{$item->content}}</td>
+                  <td>{{$item->posts->title}}</td>
                   <td><img src="{{asset('storage/img/'.$item->photo)}}" alt="" height="150px" width="150px"></td>
                   <td>{{$item->date}}</td>
                 </tr>
@@ -57,7 +59,7 @@
                     </form>
                   </td>
                   <td>
-                    <a href="/validatecom/{{$item->id}}" class="btn" style="background-color : #98D4BB">Valider l'inscription</a>
+                    <a href="/validatecom/{{$item->id}}" class="btn" style="background-color : #98D4BB">Valider la publication</a>
                   </td>
                 </tr>
                 @endforeach

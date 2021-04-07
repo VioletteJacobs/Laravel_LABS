@@ -61,7 +61,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="/category/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter une catégorie</a>
+        <a href="/tag/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter un tag</a>
     </section>
 
     <section class="mt-5" >
@@ -70,8 +70,7 @@
             <thead>
               <tr>
                 <th scope="col">Titre</th>
-                <th scope="col">Category</th>
-                {{-- <th scope="col">Titre</th> --}}
+                <th scope="col">Contenu</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -80,8 +79,7 @@
                 @foreach ($post as $item)
                 <tr>
                   <td>{{$item->title}}</td>
-                  {{-- {{dd($item)}} --}}
-                  <td>{{$item->category_id}}</td>
+                  <td>{{Str::limit($item->content, 250)}} ...</td>
                   <td>
                     <a href="/post/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
                   </td>

@@ -13,14 +13,31 @@
                 </div> 
             @endif
 
-        <h1>Modifier l'article'</h1>
-        <form action="/category/{{$edit->id}}" method="POST">
+        <h1 style="color: #CBAACB" class="text-center">Modifier l'article</h1>
+        <form action="/post/{{$edit->id}}" method="POST">
             @csrf
             @method("PATCH")
             <div class="from-group">
-                <label for="">Catégorie : </label>
-                <input type="text" name="category" value="{{old("category")? old("category") : $edit->category}}">
+                <label for="">Titre : </label>
+                <input type="text" name="titre" value="{{old("title")? old("title") : $edit->title}}">
             </div>
+            <div class="from-group">
+                <label for="">Contenu : </label>
+                <textarea name="content" id=""  cols="150" rows="20">{{old("content")? old("content") : $edit->content}}"</textarea>
+
+            </div>
+            <div class="from-group">
+                <label for="">Image de couverture : </label>
+                <input type="text" name="src" value="{{old("src")? old("src") : $edit->src}}">
+            </div>
+            @foreach ($tag as $item)
+            <div class="from-group">
+                <label for="">{{$item->tag}} </label>
+                <input type="checkbox" name="tag[]" value="{{old("$item->id")? old("$item->id") : $edit->id}}">
+                    
+            </div>
+            @endforeach
+            
             <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
         </form>
 
