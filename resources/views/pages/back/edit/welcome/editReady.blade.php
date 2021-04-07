@@ -32,7 +32,7 @@
                 <label for="">Lien du bouton : </label>
                 <input type="text" name="btn_href" value="{{old("btn_href")? old("btn_href") : $edit->btn_href}}">
             </div>
-            <button type="submit" class="btn btn-warning">Update</button>
+            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
         </form>
     
     </section>

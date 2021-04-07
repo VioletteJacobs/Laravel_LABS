@@ -20,7 +20,7 @@
                 <label for="">Paramètre droit : </label>
                 <input type="text" name="para_right" value="{{old("para_right")? old("para_right") : $edit->para_right}}">
             </div>
-            <button type="submit" class="btn btn-warning">Update</button>
+            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
         </form>
     
     </section>

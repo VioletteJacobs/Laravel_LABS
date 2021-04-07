@@ -65,7 +65,7 @@
     </section>
 
     <section class="mt-5" >
-        <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les articles du Blog : </h1>
+        <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les articles validés du Blog : </h1>
         <table class="table">
             <thead>
               <tr>
@@ -76,7 +76,7 @@
               </tr>
             </thead>
             <tbody>
-                @foreach ($post as $item)
+                @foreach ($postsValidate as $item)
                 <tr>
                   <td>{{$item->title}}</td>
                   <td>{{Str::limit($item->content, 250)}} ...</td>
@@ -96,6 +96,38 @@
         </table>
         <a href="/post/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter un post</a>
     </section>
+
+    <section class="mt-5" >
+      <h1 class="m-5 text-center" style="color: #CBAACB">Valider les posts : </h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Contenu</th>
+            <th scope="col">Ne pas valider</th>
+            <th scope="col">Valider</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($post->where("check", 0) as $item)
+            <tr>
+              <td>{{$item->title}}</td>
+              <td>{{Str::limit($item->content, 250)}} ...</td>
+              <td>
+                <form action="/post/{{$item->id}}" method="POST" >
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn" style="background-color : #EB96AA">Ne pas valider</button>
+              </form>
+            </td>
+            <td>
+              <a href="/validatepost/{{$item->id}}" class="btn" style="background-color : #98D4BB">Valider la publication</a>
+            </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+  </section>
 </div>
     
 @endsection

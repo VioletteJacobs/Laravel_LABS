@@ -7,6 +7,7 @@ use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
 use App\Models\Carrousel;
+use App\Models\Ceo;
 use App\Models\Contactsection;
 use App\Models\Email;
 use App\Models\Footer;
@@ -45,7 +46,7 @@ class WelcomeController extends Controller
     $about = Aboutwelcome::all();
 
     $team = Team::all();
-    // $Ceo = Ceo::all();
+
 
 
     $testimonials = Testimonials::orderBy("id", "desc")->limit(6)->get();

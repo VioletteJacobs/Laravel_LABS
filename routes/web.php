@@ -144,6 +144,8 @@ Route::get('/services', function () {
 Route::get('/blog', function () {
     $loader = Loader::all();
     $nav = Navbar::all();
+    
+    $footer = Footer::first();
     $logo = logo::first();
 
     $intro = Introblog::all();
@@ -151,15 +153,19 @@ Route::get('/blog', function () {
     $category = Category::all();
     $tag = Tag::all();
     $post = Post::orderBy("id", "DESC")->paginate(3);
+    $postsValidate = $post->where("check", 1);
+
     $comments = Comment::all();
     $commentsvalidate = $comments->where("check", "=", 1);
-    $nbrcomments = count($commentsvalidate);
+
+
+
+
 
 
     $newsletter = Newsletter::first();
-    $footer = Footer::first();
 
-    return view('pages.front.blog', compact("loader", "nav", "logo","intro","category", "tag", "post", "comments", "commentsvalidate", "nbrcomments", "newsletter","footer"));
+    return view('pages.front.blog', compact("loader", "nav", "logo","intro","category", "tag", "post", "postsValidate", "comments", "commentsvalidate", "newsletter","footer"));
 });
 
 Route::get('/post/{$id}', function () {
@@ -215,9 +221,8 @@ Route::get('/welcomeB', function () {
     $about = Aboutwelcome::all();
     
     $team = Team::all();
-    $Ceo = Team::where("fonction","Ceo")->get();
-    $teamRight = $team->shuffle();
-    $teamLeft = $team->shuffle();
+    $ceo = Team::where("fonction","Ceo")->get();
+
     
     $testimonials = Testimonials::all();
     
@@ -230,7 +235,7 @@ Route::get('/welcomeB', function () {
     $footer = Footer::first();
     
     
-    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "teamRight", "teamLeft", "testimonials", "titrewelcome", "newsletter",  "footer"));
+    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "ceo", "testimonials", "titrewelcome", "newsletter",  "footer"));
 });
 
 Route::get("/contactB", function(){
@@ -271,10 +276,11 @@ Route::get("/blogB", function(){
     $category = Category::all();
     $tag = Tag::all();
     $post = Post::all();
+    $postsValidate = $post->where("check", 1);
     
     
     
-    return view("pages.back.blogB", compact("category", "tag", "post"));
+    return view("pages.back.blogB", compact("category", "tag", "post", "postsValidate"));
 });
 
 Route::get("/contactB", function(){
@@ -336,6 +342,7 @@ Route::resource('commentB', CommentController::class);
 // approbation par l'admin
 Route::get("/validate/{id}", [UserController::class, "validation"]);
 Route::get("/validatecom/{id}", [CommentController::class, "validation"]);
+Route::get("/validatepost/{id}", [PostController::class, "validation"]);
 
 
 // mailing

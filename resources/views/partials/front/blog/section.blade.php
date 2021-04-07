@@ -5,10 +5,10 @@
 				<div class="col-md-8 col-sm-7 blog-posts">
 
 					<!-- Post item -->
-					@foreach ($post as $item)
+					@foreach ($postsValidate as $item)
 					<div class="post-item">
 						<div class="post-thumbnail">
-							<img src="{{asset("storage/img/".$item->src)}}" alt="">
+							<img src="{{asset("storage/img/blog/".$item->src)}}" alt="">
 							<div class="post-date">
 
 								@if ($item->created_at == NULL)
@@ -35,7 +35,7 @@
 								<a href="">{{$tage->tag }}</a>
 								@endforeach
 
-								{{-- <a href="">  {{$nbrcomments}} Comments</a> --}}
+								<a href=""> {{count($commentsvalidate->where("post_id", $item->id))}} Comments</a>
 							</div>
 							<p>{{Str::limit($item->content, 350)}} ... </p>
 							<a href="/post/{{$item->id}}" class="read-more">Read More</a>

@@ -14,12 +14,12 @@
             @endif
 
         <h1 style="color: #CBAACB" class="text-center">Modifier l'article</h1>
-        <form action="/post/{{$edit->id}}" method="POST">
+        <form action="/post/{{$edit->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method("PATCH")
             <div class="from-group">
                 <label for="">Titre : </label>
-                <input type="text" name="titre" value="{{old("title")? old("title") : $edit->title}}">
+                <input type="text" name="title" value="{{old("title")? old("title") : $edit->title}}">
             </div>
             <div class="from-group">
                 <label for="">Contenu : </label>
@@ -28,8 +28,18 @@
             </div>
             <div class="from-group">
                 <label for="">Image de couverture : </label>
-                <input type="text" name="src" value="{{old("src")? old("src") : $edit->src}}">
+                <input type="file" name="src" value="{{old("src")? old("src") : $edit->src}}">
             </div>
+            <div class="from-group">
+                <label for="">Catégorie : </label>
+                <select name="category_id" id="">
+                    @foreach ($category as $item)
+                    <option value="{{$item->id}}">{{$item->category}}</option>
+                    @endforeach
+                </select>
+               
+            </div>
+
             @foreach ($tag as $item)
             <div class="from-group">
                 <label for="">{{$item->tag}} </label>

@@ -177,9 +177,9 @@
         </tr>
       </thead>
       <tbody>
-          {{-- @foreach ($Ceo as $item)
+          @foreach ($ceo as $item)
           <tr>
-            <td>{{$item->p}}</td>
+            <td><img src="{{asset('storage/img/team/'.$item->photo)}}" alt="" height="150px" width="150px"></td>
             <td>{{$item->name}}</td>
             <td>{{$item->firstname}}</td>
             <td>{{$item->fonction}}</td>
@@ -187,38 +187,12 @@
               <a href="/ceo/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
             </td>
           </tr>
-          @endforeach --}}
+          @endforeach
       </tbody>
   </table>
 </section>
 
-{{-- <section class="mt-5">
-  <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le Call to Action: </h1>
-  <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Titre </th>
-          <th scope="col">Paragraphe </th>
-          <th scope="col">Contenu du bouton</th>
-          <th scope="col">Lien du bouton</th>
-          <th scope="col">Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-          @foreach ($ready as $item)
-          <tr>
-            <td>{{$item->title}}</td>
-            <td>{{$item->p}}</td>
-            <td>{{$item->btn_content}}</td>
-            <td>{{$item->btn_href}}</td>
-            <td>
-              <a href="/ready/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
-            </td>
-          </tr>
-          @endforeach
-      </tbody>
-  </table>
-</section> --}}
+
 
 </div>
     

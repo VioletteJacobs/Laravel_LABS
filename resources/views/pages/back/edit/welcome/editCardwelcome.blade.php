@@ -28,7 +28,7 @@
                 <label for="">Paragraphe : </label>
                 <input type="text" name="p" value="{{old("p")? old("p") : $edit->p}}">
             </div>
-            <button type="submit" class="btn btn-warning">Update</button>
+            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
         </form>
     
     </section>

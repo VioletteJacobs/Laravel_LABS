@@ -15,8 +15,8 @@
 								<h2>12</h2>
 								<h3>January 1995</h3>
 								@else
-								<h2>{{$show->created_at->foramt("d")}}</h2>
-								<h3>{{$show->created_at->foramt("m Y")}}</h3>
+								<h2>{{$show->created_at->format("d")}}</h2>
+								<h3>{{$show->created_at->format("m Y")}}</h3>
 									
 								@endif
 							</div>

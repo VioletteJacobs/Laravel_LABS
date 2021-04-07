@@ -22,19 +22,19 @@ class TeamSeeder extends Seeder
                 "fonction" => "CEO",
             ],
             [
-                "photo" => "1.jpg",
+                "photo" => "5.jpeg",
                 "name" => "Willimas",
                 "firstname" => "Marie",
                 "fonction" => "HappyNess Manager",
             ],
             [
-                "photo" => "1.jpg",
+                "photo" => "3.jpg",
                 "name" => "Willimas",
                 "firstname" => "Sophia",
                 "fonction" => "HappyNess Manager",
             ],
             [
-                "photo" => "3.jpg",
+                "photo" => "4.jpeg",
                 "name" => "Broder",
                 "firstname" => "Pauline",
                 "fonction" => "Full-stack web dev",

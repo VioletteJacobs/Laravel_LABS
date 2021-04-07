@@ -36,7 +36,7 @@
                 <label for="">Fonction : </label>
                 <input type="text" name="fonction" value="{{old("fonction")? old("fonction") : $edit->fonction}}">
             </div>
-            <button type="submit" class="btn btn-warning">Update</button>
+            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
         </form>
     
     </section>

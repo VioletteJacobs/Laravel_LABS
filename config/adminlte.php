@@ -364,7 +364,7 @@ return [
         [
             'text'       => 'Accès',
             'icon_color' => 'red',
-            'url'        => '#',
+            'url'        => '/accesB',
         ],
         [
             'text'       => 'Utilisatrices',
@@ -376,6 +376,11 @@ return [
             'icon_color' => 'blue',
             'url'        => '/commentB',
         ],
+        // [
+        //     'text'       => 'Post',
+        //     'icon_color' => 'red',
+        //     'url'        => '/accesB',
+        // ],
 
     ],
 

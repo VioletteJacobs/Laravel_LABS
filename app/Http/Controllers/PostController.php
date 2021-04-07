@@ -13,6 +13,8 @@ use App\Models\Navbar;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Stmt\Foreach_;
 
 class PostController extends Controller
@@ -34,7 +36,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $tag = Tag::all();
+        $category = Category::all();
+        return view("pages.back.create.blog.createPost", compact("tag", "category"));
     }
 
     /**
@@ -49,9 +53,29 @@ class PostController extends Controller
             "title" => "required|max:200",
             "src" => "required|max:200",
             "content" => "required",
-            "user_id" => "required|max:200",
             "category_id" => "required|max:200",
         ]);
+
+
+
+        $newEntry = new Post;
+        $newEntry->title = $request->title;
+        Storage::put("public/img/blog", $request->file("src"));
+        $newEntry->src = $request->file("src")->hashName();
+        $newEntry->content = $request->content;
+        $newEntry->category_id = $request->category_id;
+        $newEntry->user_id = Auth::id();
+        $newEntry->check = 0;
+
+        
+        $newEntry->save();
+
+        foreach ($request->tag as $item) {
+            $newEntry->tags()->attach($item, ["post_id" => $newEntry->id]);
+            
+        }
+
+        return redirect("/blogB");
     }
 
     /**
@@ -94,7 +118,8 @@ class PostController extends Controller
     {
         $edit = $post;
         $tag = Tag::all();
-        return view("pages.back.edit.blog.editPost", compact("edit", "tag"));
+        $category = Category::all();
+        return view("pages.back.edit.blog.editPost", compact("edit", "tag", "category"));
     }
 
     /**
@@ -109,22 +134,25 @@ class PostController extends Controller
         $validation = $request->validate([
 		    "src" => 'required |min:2|max:100',
             "title" => 'required|min:2|max:100',
-            "content" => 'required|min:2|max:500',
-            "category_id" => 'required|min:2|max:500',
+            "content" => 'required|min:2',
+            "category_id" => 'required',
 
         ]);
 
-        $tag = Tag::all();
+
 
         $update = $post;
         $update->title = $request->title;
-        $update->src = $request->src;
+        Storage::delete("public/img/blog/".$update->src);
+        Storage::put("public/img/blog", $request->file("src"));
+        $update->src = $request->file("src")->hashName();
+
         $update->content = $request->content;
         
         $update->save();
-
-        foreach ($tag as $item) {
-            $item
+        $update->tags()->detach();
+        foreach ($request->tag as $item) {
+            $update->tags()->attach($item, ["post_id" => $update->id]);
             
         }
         return redirect("/blogB");
@@ -200,6 +228,14 @@ class PostController extends Controller
 
 
         return view('pages.front.showtag', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'postarray'));
+        
+    }
+
+    public function validation($id){
+        $post = Post::find($id);
+        $post->check = 1;
+        $post->save();
+        return redirect()->back();
 
     }
 }

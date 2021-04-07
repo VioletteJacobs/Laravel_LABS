@@ -21,7 +21,7 @@
                 <label for="">Catégorie : </label>
                 <input type="text" name="category" value="{{old("category")? old("category") : $edit->category}}">
             </div>
-            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
+            <button type="submit" class="btn" style= "background-color: #72AD9A">Update</button>
         </form>
 
     </section>
