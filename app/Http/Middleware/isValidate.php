@@ -17,10 +17,14 @@ class isValidate
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->check == 1){
-            return $next($request);
+        if (Auth::check()) {
+            if(Auth::user()->check == 1){
+                return $next($request);
+            }else{
+                return redirect("/")->withErrors("Vous n'avez pas accès à cette partie du site. Il vous êtres membre pour avoir cet accès. Mais bien essayé ! Il est possible que votre candidature soit en cours de validation par le webmaster et l'admin, un peu de patience...  ");
+            }
         }else{
-            return redirect()->back()->withErrors("Vous n'avez pas accès à cette partie du site. Il vous êtres membre pour avoir cet accès. Mais bien essayé ! ");
+            return redirect('login');
         }
     }
 }

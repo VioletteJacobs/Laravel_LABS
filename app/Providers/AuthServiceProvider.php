@@ -30,6 +30,17 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
+        Gate::define("isAuthor", function(User $user){
+            if($user->role_id == 1 || $user->role_id == 2|| $user->role_id == 4){;
+                return true;
+            }
+        });
+        Gate::define("post-edit", function(User $user, $post){
+            if($user->role_id == 1 || $user->role_id == 2 || $post->user_id == $user->id){
+                return true;
+            }
+            
+        });
 
         //
     }

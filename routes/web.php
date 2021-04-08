@@ -359,4 +359,4 @@ Route::get("/filtertag/{id}", [PostController::class, "filtertag"]);
 
 Route::get('/home', function() {
     return view('home');
-})->name('home')->middleware('auth');
+})->name('home')->middleware('isValidate');

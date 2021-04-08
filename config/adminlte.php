@@ -286,10 +286,6 @@ return [
                     'url'  => '/welcomeB',
                 ],
                 [
-                    'text' => 'Vidéo',
-                    'url'  => '/welcomeB',
-                ],
-                [
                     'text' => 'Témoignages',
                     'url'  => '/welcomeB',
                 ],
@@ -322,6 +318,7 @@ return [
             [
                 'text'    => 'Blog',
                 'icon'    => 'fas fa-tools',
+                'can' => 'isAuthor',
                 'submenu' => [
                     [
                         'text' => 'Categories',
