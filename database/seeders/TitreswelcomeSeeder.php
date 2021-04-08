@@ -16,16 +16,16 @@ class TitreswelcomeSeeder extends Seeder
     {
         DB::table("titreswelcomes")->insert([
             [
-                "title" => "Get in the Lab and discover the world",
+                "title" => "Get in (the Lab) and discover the world",
             ],
             [
                 "title" => "What our client said about us",
             ],
             [
-                "title" => "Get in the Lab and see the services",
+                "title" => "Get in the Lab and see the (services)",
             ],
             [
-                "title" => "Get in the Lab and meet the team",
+                "title" => "Get in the Lab and (meet the team)",
             ],
         ]);
     }

@@ -307,11 +307,11 @@ return [
                     ],
                     [
                         'text' => 'Les titres',
-                        'url'  => '/servicesB',
+                        'url'  => '/serviceB',
                     ],
                     [
                         'text' => 'Vos services',
-                        'url'  => '/servicesB',
+                        'url'  => '/serviceB',
                     ],
                 ],
             ],

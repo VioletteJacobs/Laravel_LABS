@@ -11,24 +11,21 @@
                     </ul> 
                 </div> 
             @endif
-    
+            <h1 class="m-5 text-center" style="color: #CBAACB"> Modifier un élément de la barre de navigation</h1>
     
             <form action="/service/{{$edit->id}}" method="POST">
                 @csrf
                 @method("PATCH")
                 <div class="from-group">
-                    <label for="">Titre : </label>
-                    <input type="text" name="title" value="{{old("title")? old("title") : $edit->title}}">
+                    <label for="">Lien : </label>
+                    <input type="text" name="url" value="{{old("url")? old("url") : $edit->url}}">
+                    <small> <br>* pour modifier le lien, toujours mettre un "/". Des modifications dans le site seront également nécessaires pour que ce lien mène vers une page. </small>
                 </div>
                 <div class="from-group">
-                    <label for="">Icon: </label>
-                    <input type="text" name="icon" value="{{old("icon")? old("icon") : $edit->icon}}">
+                    <label for="">Nom : </label>
+                    <input type="text" name="content" value="{{old("content")? old("content") : $edit->content}}">
                 </div>
-                <div class="from-group">
-                    <label for="">Paragraphe : </label>
-                    <input type="text" name="p" value="{{old("p")? old("p") : $edit->p}}">
-                </div>
-                <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
+                <button type="submit" class="btn" style= "background-color: #F2DC99">Update</button>
             </form>
     
     </section>

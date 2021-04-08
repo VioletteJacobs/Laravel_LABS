@@ -1,6 +1,7 @@
 @extends('template.back.templateBack')
 @section('content')
 <section class="container">
+    <h1 class="m-5 text-center" style="color: #CBAACB"> Modifier les titres de la page service</h1>
     {{-- messade erreur validate --}}
             @if ($errors->any()) 
                 <div class="alert alert-danger"> 
@@ -18,9 +19,10 @@
             @method("PATCH")
             <div class="from-group">
                 <label for="">Titre : </label>
-                <input type="text" name="title" value="{{old("title")? old("title") : $edit->title}}">
+                <input type="text" name="title"  value="{{old("title")? old("title") : $edit->title}}">
+                <small> <br> * pour choisir la partie sous fond vert dans le titre, la mettre entre parenthèse. </small>
             </div>
-            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
+            <button type="submit" class="btn" style= "background-color: #F2DC99">Update</button>
         </form>
     
     </section>

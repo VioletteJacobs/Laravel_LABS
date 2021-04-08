@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use App\Mail\Newsletter;
 use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
 use App\Models\Carrousel;
-use App\Models\Ceo;
 use App\Models\Contactsection;
 use App\Models\Email;
 use App\Models\Footer;
@@ -39,7 +38,26 @@ class WelcomeController extends Controller
     $cardwelcome = Cardwelcome::all();
     $carrousel = Carrousel::all();
     $logo = logo::first();
+
+
     $titrewelcome = Titreswelcome::all();
+
+
+    $titreUnWelcome = Titreswelcome::first();
+    $titleOneWelcome = Str::of($titreUnWelcome->title)->replace('(', '<span>');
+    $titleOne = Str::of($titleOneWelcome)->replace(')', '</span>');
+
+    $titredeuxWelcome = Titreswelcome::where("id", 3)->get();
+
+    $titleTwoWelcome = Str::of($titredeuxWelcome[0]->title)->replace('(', '<span>');
+    $titleTwo = Str::of($titleTwoWelcome)->replace(')', '</span>');
+
+    $titretroisWelcome = Titreswelcome::where("id", 4)->get();
+
+    $titleThreeWelcome = Str::of($titretroisWelcome[0]->title)->replace('(', '<span>');
+    $titleThree = Str::of($titleThreeWelcome)->replace(')', '</span>');
+
+
     $services = Service::all();
 
     // $carrousel = Carrousel::all();
@@ -61,7 +79,7 @@ class WelcomeController extends Controller
     $footer = Footer::first();
 
 
-    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "testimonials", "titrewelcome", "newsletter", "contactSection", "subject", "address", "phone", "email", "footer"));
+    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "testimonials", "titrewelcome", "titleOne", "titleTwo", "titleThree","newsletter", "contactSection", "subject", "address", "phone", "email", "footer"));
     }
 
     /**

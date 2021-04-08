@@ -39,6 +39,7 @@
                             <th scope="col">Nom :</th>
                             <th scope="col">Prénom :</th>
                             <th scope="col">Role :</th>
+                            <th scope="col">Fonction :</th>
                             <th scope="col">Email :</th>
                           </tr>
                         </thead>

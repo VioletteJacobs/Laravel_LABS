@@ -59,7 +59,7 @@
         </table>
     </section>
 
-    <section class="mt-5" >
+    {{-- <section class="mt-5" >
         <h1 class="m-5 text-center" style="color: #CBAACB">Modifier la newsletter :</h1>
         <table class="table">
             <thead>
@@ -82,7 +82,7 @@
 
             </tbody>
         </table>
-    </section>
+    </section> --}}
     
     <section class="mt-5" >
         <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le footer :</h1>

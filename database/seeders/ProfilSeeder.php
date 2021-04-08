@@ -16,16 +16,6 @@ class ProfilSeeder extends Seeder
     public function run()
     {
         DB::table("users")->insert([
-            // [
-            //     "name" => "admin",
-            //     "firstname" => "admin",
-            //     "email" => "a@a",
-            //     "age" => 24,
-            //     "fonction_id" =>1,
-            //     "password" => Hash::make("password"),
-            //     "role_id" => 1,
-            //     "photo" => "public/img/team/01.jpeg"
-            // ],
             [
                 "name" => "Jouran",
                 "firstname" => "Elisa",

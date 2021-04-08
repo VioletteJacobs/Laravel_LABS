@@ -27,6 +27,7 @@ use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\TitresserviceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Str;
 use App\Models\Aboutwelcome;
 use App\Models\Address;
 use App\Models\Cardwelcome;
@@ -118,6 +119,20 @@ Route::get('/services', function () {
     $nav = Navbar::all();
     $logo = logo::first();
 
+
+    $titredeuxWelcome = Titreswelcome::where("id", 3)->get();
+
+    $titleTwoWelcome = Str::of($titredeuxWelcome[0]->title)->replace('(', '<span>');
+    $titleTwo = Str::of($titleTwoWelcome)->replace(')', '</span>');
+
+
+
+    $titredeuxService = Titresservice::where("id", 2)->get();
+
+    $titleTwoService = Str::of($titredeuxService[0]->title)->replace('(', '<span>');
+    $titleTwobis = Str::of($titleTwoService)->replace(')', '</span>');
+
+
     $introService = Introservice::all();
     $titresService =Titresservice::all();
     $services = Service::orderBy("id", "DESC")->paginate(9);
@@ -137,7 +152,7 @@ Route::get('/services', function () {
 
     $newsletter = Newsletter::first();
     $footer = Footer::first();
-    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "services", "lastservices", "posts", "footer" , "contactSection", "address", "phone", "subject", "email","newsletter", "footer"));
+    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "titleTwo", "titleTwobis", "services", "lastservices", "posts", "footer" , "contactSection", "address", "phone", "subject", "email","newsletter", "footer"));
 });
 
 
@@ -228,6 +243,8 @@ Route::get('/welcomeB', function () {
     
     
     $newsletter = Newsletter::first();
+
+    $icon = Icon::all();
     
     
     
@@ -235,7 +252,7 @@ Route::get('/welcomeB', function () {
     $footer = Footer::first();
     
     
-    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "ceo", "testimonials", "titrewelcome", "newsletter",  "footer"));
+    return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel","icon", "logo", "services", "about", "team", "ceo", "testimonials", "titrewelcome", "newsletter",  "footer"));
 });
 
 // Route::get("/contactB", function(){

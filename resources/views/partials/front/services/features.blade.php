@@ -3,7 +3,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="section-title">
-            <h2>{{$titresService[1]->title}} features</h2>
+            <h2>{!!$titleTwobis!!}</h2>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 features">

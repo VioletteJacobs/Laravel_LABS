@@ -84,7 +84,7 @@ class AboutwelcomeController extends Controller
         $update = $aboutwelcome;
         $update->para_right = $request->para_right;
         $update->para_left = $request->para_left;
-        Storage::delete("public/img/".$update->img);
+        // Storage::delete("public/img/".$update->img);
         Storage::put("public/img", $request->img);
         $update->img = $request->file("img")->hashName();
         $update->btn_content = $request->btn_content;

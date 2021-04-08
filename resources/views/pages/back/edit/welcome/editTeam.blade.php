@@ -1,6 +1,7 @@
 @extends('template.back.templateBack')
 @section('content')
 <section class="container">
+    <h1 class="m-5 text-center" style="color: #CBAACB"> Modifier les profils des membres de l'équipe</h1>
     {{-- messade erreur validate --}}
             @if ($errors->any()) 
                 <div class="alert alert-danger"> 
@@ -32,7 +33,7 @@
                 <label for="">Fonction : </label>
                 <input type="text" name="fonction" value="{{old("fonction")? old("fonction") : $edit->fonction}}">
             </div>
-            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
+            <button type="submit" class="btn" style= "background-color: #F2DC99">Update</button>
         </form>
     
     </section>

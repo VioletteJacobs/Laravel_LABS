@@ -2,7 +2,7 @@
 <div class="services-section spad">
     <div class="container">
         <div class="section-title dark">
-            <h2>{{$titrewelcome[2]->title}}</h2>
+            <h2>{!!$titleTwo!!}</h2>
         </div>
         <div class="row">
             {{-- iteration for de random of 9 --}}

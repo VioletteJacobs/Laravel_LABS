@@ -16,10 +16,10 @@ class TitresserviceSeeder extends Seeder
     {
         DB::table("titresservices")->insert([
             [
-                "title"=> "Get in the Lab and see the services"
+                "title"=> "Get in the Lab and see (the services)"
             ],
             [
-                "title"=> "Get in the Lab and discover the world"
+                "title"=> "Get in the Lab and (discover the world)"
             ],
         ]);
     }

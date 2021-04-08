@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cardwelcome;
+use App\Models\Icon;
 use Illuminate\Http\Request;
 
 class CardwelcomeController extends Controller
@@ -61,8 +62,9 @@ class CardwelcomeController extends Controller
     public function edit($id)
     {
         $edit = Cardwelcome::find($id);
+        $icon = Icon::all();
         // dd($edit);
-        return view("pages.back.edit.welcome.editCardwelcome", compact("edit"));
+        return view("pages.back.edit.welcome.editCardwelcome", compact("edit", "icon"));
     }
 
     /**

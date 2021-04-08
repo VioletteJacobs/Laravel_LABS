@@ -1,6 +1,7 @@
 @extends('template.back.templateBack')
 @section('content')
 <section class="container">
+    <h1 class="m-5 text-center" style="color: #CBAACB"> Modifier les posts du Blog </h1>
 
     {{-- messade erreur validate --}}
             @if ($errors->any()) 
@@ -13,7 +14,6 @@
                 </div> 
             @endif
 
-        <h1 style="color: #CBAACB" class="text-center">Modifier l'article</h1>
         <form action="/post/{{$edit->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method("PATCH")
@@ -48,7 +48,7 @@
             </div>
             @endforeach
             
-            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
+            <button type="submit" class="btn" style= "background-color: #F2DC99">Update</button>
         </form>
 
     </section>

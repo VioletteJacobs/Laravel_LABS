@@ -1,5 +1,6 @@
 @extends('template.back.templateBack')
 @section('content')
+<h1 class="m-5 text-center" style="color: #CBAACB"> Modifier l'introduction de la page d'accueil</h1>
 <section class="container">
     {{-- messade erreur validate --}}
             @if ($errors->any()) 
@@ -36,7 +37,7 @@
                 <label for="">Lien de la vidéo : </label>
                 <input type="text" name="video_href" value="{{old("video_href")? old("video_href") : $edit->video_href}}">
             </div>
-            <button type="submit" class="btn" style= "background-color: #D4FOFO">Update</button>
+            <button type="submit" class="btn" style= "background-color: #F2DC99">Update</button>
         </form>
     
     </section>

@@ -49,7 +49,7 @@ class TestimonialsController extends Controller
         $newEntry = new Testimonials;
         $newEntry->p = $request->p;
         $newEntry->name = $request->name;
-        Storage::put("public.img/", $request->file("photo"));
+        Storage::put("public.img/avatar", $request->file("photo"));
         $newEntry->photo = $request->file("photo")->hashName();
         $newEntry->firstname = $request->firstname;
         $newEntry->fonction = $request->fonction;
@@ -102,7 +102,7 @@ class TestimonialsController extends Controller
         $update = Testimonials::find($id);
         $update->p = $request->p;
         $update->name = $request->name;
-        Storage::delete("public/img/avatar/".$update->photo);
+        // Storage::delete("public/img/avatar/".$update->photo);
         Storage::put("public/img/avatar", $request->photo);
         $update->photo = $request->file("photo")->hashName();
         $update->firstname = $request->firstname;
