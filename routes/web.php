@@ -238,17 +238,17 @@ Route::get('/welcomeB', function () {
     return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "ceo", "testimonials", "titrewelcome", "newsletter",  "footer"));
 });
 
-Route::get("/contactB", function(){
+// Route::get("/contactB", function(){
     
-    $contactSection = Contactsection::all();
-    // $formContact = Formcontact::first();
-    $address = Address::all();
-    $phone = Phone::all();
-    $email = Email::all();
+//     $contactSection = Contactsection::all();
+//     // $formContact = Formcontact::first();
+//     $address = Address::all();
+//     $phone = Phone::all();
+//     $email = Email::all();
     
-    return view('pages.back.contactB', compact("contactSection", "address", "phone", "email"));
+//     return view('pages.back.contactB', compact("contactSection", "address", "phone", "email"));
     
-});
+// });
 
 Route::get("/mainB", function(){
     $loader = Loader::first();
@@ -259,7 +259,7 @@ Route::get("/mainB", function(){
     
     $footer = Footer::first();
     return view("pages.back.mainB", compact("loader", "logo", "nav", "newsletter", "footer"));
-});
+})->middleware(['auth', 'isWebmaster']);
 
 Route::get("/serviceB", function(){
     
@@ -269,7 +269,7 @@ Route::get("/serviceB", function(){
     $icon = Icon::all();
     
     return view("pages.back.serviceB", compact("introService", "titresService", "services", "icon"));
-});
+})->middleware(['auth', 'isWebmaster']);
 
 Route::get("/blogB", function(){
 
@@ -295,7 +295,7 @@ Route::get("/contactB", function(){
     $email = Email::all();
     
     return view("pages.back.contactB", compact("introContact","map", "contactSection", "address", "phone", "email", ));
-});
+})->middleware(['auth', 'isWebmaster']);
 
 
 // route ressource

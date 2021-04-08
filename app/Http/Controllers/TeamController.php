@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
+    public function __construct(){
+        $this->middleware(["auth", "isWebmaster"]);
+    }
     /**
      * Display a listing of the resource.
      *

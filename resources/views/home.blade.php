@@ -7,6 +7,17 @@
 @stop
 
 @section('content')
+
+@if ($errors->any()) 
+<div class="alert alert-danger"> 
+    <ul> 
+        @foreach ($errors->all() as $error) 
+        <li>{{ $error }}</li> 
+        @endforeach 
+    </ul> 
+</div> 
+@endif
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -27,7 +38,7 @@
                             {{-- <th scope="col">Image</th> --}}
                             <th scope="col">Nom :</th>
                             <th scope="col">Prénom :</th>
-                            {{-- <th scope="col">Fonction :</th> --}}
+                            <th scope="col">Role :</th>
                             <th scope="col">Email :</th>
                           </tr>
                         </thead>
@@ -35,13 +46,13 @@
                             @auth
                                 <tr>
                                     {{-- <td>
-                                        <img src="{{asset('storage/img/'.Auth::user()->url)}}" alt="" height="50px"> 
+                                        <img src="{{asset('storage/img/'.Auth::user()->photo)}}" alt="" height="50px"> 
                                     </td> --}}
                                     <td>{{Auth::user()->name}}</td>
                                     <td>{{Auth::user()->firstname}}</td>
-                                    {{-- <td>{{Auth::user()->functions->function}}</td> --}}
+                                    <td>{{Auth::user()->roles->role}}</td>
+                                    <td>{{Auth::user()->fonctions->fonction}}</td>
                                     <td>{{Auth::user()->email}}</td>
-
                                     <td>
                                         <a href="/users/{{Auth::user()->id}}/edit" class="btn" style="background-color: #FFCCB6">Edit</a>
                                     </td>

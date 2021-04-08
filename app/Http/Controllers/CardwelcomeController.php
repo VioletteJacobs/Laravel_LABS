@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class CardwelcomeController extends Controller
 {
+    public function __construct(){
+        $this->middleware(["auth", "isWebmaster"]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +49,7 @@ class CardwelcomeController extends Controller
      */
     public function show(Cardwelcome $cardwelcome)
     {
-        //
+
     }
 
     /**

@@ -2,6 +2,16 @@
 @section('content')
 <div class="container m-5">
 
+  @if ($errors->any()) 
+<div class="alert alert-danger"> 
+    <ul> 
+        @foreach ($errors->all() as $error) 
+        <li>{{ $error }}</li> 
+        @endforeach 
+    </ul> 
+</div> 
+@endif
+
     <section class="mt-5" >
         <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le Logo: </h1>
         <table class="table">

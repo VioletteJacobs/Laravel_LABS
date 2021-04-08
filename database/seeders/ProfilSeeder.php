@@ -54,7 +54,7 @@ class ProfilSeeder extends Seeder
                 "email" => "e@e",
                 "fonction_id" => 4,
                 "password" => Hash::make("password"),
-                "role_id" => 3,
+                "role_id" => 1,
                 "photo" => "1.jpg",
                 "description" => "I love food, i'm part of the lab's team since 2 years & i love my job. I writte about marketing & social media. I love tiktok & red lipstick",
                 "check" => 1

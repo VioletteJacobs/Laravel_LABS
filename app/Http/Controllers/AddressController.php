@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
+    public function __construct(){
+        $this->middleware(["auth", "isWebmaster"]);
+    }
     /**
      * Display a listing of the resource.
      *
