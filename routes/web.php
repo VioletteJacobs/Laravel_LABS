@@ -259,7 +259,7 @@ Route::get("/mainB", function(){
     
     $footer = Footer::first();
     return view("pages.back.mainB", compact("loader", "logo", "nav", "newsletter", "footer"));
-})->middleware(['auth', 'isWebmaster']);
+});
 
 Route::get("/serviceB", function(){
     

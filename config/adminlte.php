@@ -244,9 +244,11 @@ return [
             'label_color' => 'success',
         ],
         ['header' => 'Modifier vos pages :'],
+
         [
             'text'    => 'général',
             'icon'    => 'fas fa-tools',
+            'can' => 'isWebmaster',
             'submenu' => [
                 [
                     'text' => 'La barre de navigation',
@@ -269,6 +271,7 @@ return [
         [
             'text'    => 'Accueil',
             'icon'    => 'fas fa-tools',
+            'can' => 'isWebmaster',
             'submenu' => [
                 [
                     'text' => 'Carousel',
@@ -290,16 +293,17 @@ return [
                     'text' => 'Témoignages',
                     'url'  => '/welcomeB',
                 ],
-
-                    [
-                        'text' => 'Team',
-                        'url'  => '/welcomeB',
-                    ],
+                
+                [
+                    'text' => 'Team',
+                    'url'  => '/welcomeB',
                 ],
             ],
+        ],
             [
                 'text'    => 'Services',
                 'icon'    => 'fas fa-tools',
+                'can' => 'isWebmaster',
                 'submenu' => [
                     [
                         'text' => 'Introduction',
@@ -337,6 +341,7 @@ return [
             [
                 'text'    => 'Contact',
             'icon'    => 'fas fa-tools',
+            'can' => 'isWebmaster',
             'submenu' => [
                 [
                     'text' => 'formulaire de contact',
@@ -360,21 +365,25 @@ return [
                 ],
             ],
         ],
-        ['header' => 'Admin'],
+        ['header' => 'Admin',
+        'can' => 'isWebmaster',],
         [
             'text'       => 'Accès',
             'icon_color' => 'red',
             'url'        => '/accesB',
+            'can' => 'isWebmaster',
         ],
         [
             'text'       => 'Utilisatrices',
             'icon_color' => 'yellow',
             'url'        => '/userB',
+            'can' => 'isWebmaster',
         ],
         [
             'text'       => 'Commentaires',
             'icon_color' => 'blue',
             'url'        => '/commentB',
+            'can' => 'isWebmaster',
         ],
         // [
         //     'text'       => 'Post',
