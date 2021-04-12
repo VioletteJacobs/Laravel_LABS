@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class IntroblogSeeder extends Seeder
+class EmailcontactSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,9 @@ class IntroblogSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("introblogs")->insert([
+        DB::table('emailcontacts')->insert([
             [
-                "home" =>"Home",
-                "title" => "Blog",
-                "home_href" => "/",
-                "blog" => "Blog",
+                "email" => "vio@vio"
             ]
         ]);
     }

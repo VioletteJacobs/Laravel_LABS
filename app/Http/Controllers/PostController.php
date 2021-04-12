@@ -7,9 +7,11 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Footer;
 use App\Models\Introblog;
+use App\Models\Introservice;
 use App\Models\Loader;
 use App\Models\logo;
 use App\Models\Navbar;
+use App\Models\Newsletter as ModelsNewsletter;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -92,7 +94,7 @@ class PostController extends Controller
         $nav = Navbar::all();
         $logo = logo::first();
     
-        $intro = Introblog::all();
+        $intro = Introservice::all();
     
         $category = Category::all();
         $tag = Tag::all();
@@ -103,9 +105,9 @@ class PostController extends Controller
         $nbrcomments = count($commentsvalidate);
     
 
-        // $newsletter = Newsletter::first();
+        $newsletter = ModelsNewsletter::first();
         $footer = Footer::first();
-        return view ("pages.front.blogpost", compact("show", "loader", "nav", "logo", "intro", "category", "tag", "post", "comments", "commentsvalidate", "nbrcomments", "footer"));
+        return view ("pages.front.blogpost", compact("show", "loader", "nav", "logo", "intro", "category", "tag", "post", "comments", "commentsvalidate", "nbrcomments", "newsletter", "footer"));
     }
 
     /**
@@ -143,7 +145,7 @@ class PostController extends Controller
 
         $update = $post;
         $update->title = $request->title;
-        Storage::delete("public/img/blog/".$update->src);
+        // Storage::delete("public/img/blog/".$update->src);
         Storage::put("public/img/blog", $request->file("src"));
         $update->src = $request->file("src")->hashName();
 
@@ -175,44 +177,65 @@ class PostController extends Controller
         $loader = Loader::all();
         $nav = Navbar::all();
         $logo = logo::first();
-        $intro = Introblog::all();
+        $intro = Introservice::all();
     
         $category = Category::all();
         $tag = Tag::all();
-        // $newsletter = Newsletter::first();
+
+        $newsletter = ModelsNewsletter::first();
         $footer = Footer::first();
+
+        $comments = Comment::all();
+        $commentsvalidate = $comments->where("check", "=", 1);
 
 
         $search = $request->input("search");
         $posts = Post::query()->where('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->get();
-        return view('pages.front.search', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts'));
+
+        
+        if ($request->input("search") == null) {
+            return redirect()->back();
+        } else {
+
+            return view('pages.front.search', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts', 'comments', 'commentsvalidate', "newsletter"));
+        }
+        
     }
     
     public function filterc ($id){
         $loader = Loader::all();
         $nav = Navbar::all();
         $logo = logo::first();
-        $intro = Introblog::all();
+        $intro = Introservice::all();
     
         $category = Category::all();
         $tag = Tag::all();
-        $footer = Footer::first();
-
+        
         $posts = Post::all();
         $postsCategory = $posts->where("category_id", $id);
+        
+        $comments = Comment::all();
+        $commentsvalidate = $comments->where("check", "=", 1);
+        
+        $newsletter = ModelsNewsletter::first();
+        $footer = Footer::first();
 
-
-        return view('pages.front.showCategory', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts', "postsCategory"));
+        return view('pages.front.showCategory', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'posts', "postsCategory", "comments", "commentsvalidate", "newsletter"));
     }
     public function filtertag($id){
         $loader = Loader::all();
         $nav = Navbar::all();
         $logo = logo::first();
-        $intro = Introblog::all();
+        $intro = Introservice::all();
     
         $category = Category::all();
         $tag = Tag::all();
+    
+        $newsletter = ModelsNewsletter::first();
         $footer = Footer::first();
+
+        $comments = Comment::all();
+        $commentsvalidate = $comments->where("check", "=", 1);
 
         $posts = Post::all();
         $postarray = [];
@@ -227,7 +250,7 @@ class PostController extends Controller
         // $postsTag = $posts->where($posts->tags->id);
 
 
-        return view('pages.front.showtag', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'postarray'));
+        return view('pages.front.showtag', compact ("loader", "nav", "logo", "category", "tag", "intro", "footer",'postarray', "comments", "commentsvalidate", "newsletter"));
         
     }
 

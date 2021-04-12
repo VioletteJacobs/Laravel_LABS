@@ -2,7 +2,7 @@
 <div class="services-section spad">
     <div class="container">
         <div class="section-title dark">
-            <h2>{!!$titleTwo!!}</h2>
+            <h2>{!!$titreUnService!!}</h2>
         </div>
         <div class="row">
             @foreach ($services as $item)
@@ -22,7 +22,7 @@
             @endforeach
         </div>
         <!-- Pagination -->
-        <div class="page-pagination">
+        <div class="text-center">
             {{$services->fragment('services')->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>

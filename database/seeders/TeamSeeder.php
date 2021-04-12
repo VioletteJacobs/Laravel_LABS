@@ -28,6 +28,12 @@ class TeamSeeder extends Seeder
                 "fonction" => "HappyNess Manager",
             ],
             [
+                "photo" => "8.jpeg",
+                "name" => "bros",
+                "firstname" => "Rebecca",
+                "fonction" => "Manager",
+            ],
+            [
                 "photo" => "3.jpg",
                 "name" => "Willimas",
                 "firstname" => "Sophia",
@@ -37,6 +43,12 @@ class TeamSeeder extends Seeder
                 "photo" => "4.jpeg",
                 "name" => "Broder",
                 "firstname" => "Pauline",
+                "fonction" => "Full-stack web dev",
+            ],
+            [
+                "photo" => "7.jpeg",
+                "name" => "Cruz",
+                "firstname" => "Alba",
                 "fonction" => "Full-stack web dev",
             ],
         ]);

@@ -34,32 +34,6 @@
                             </table>
                           </section>
                     
-                          <section class="mt-5">
-                            <h1 class="m-5 text-center" style="color: #CBAACB">Modifier l'intro de la page Service : </h1>
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Home</th>
-                                    <th scope="col">Titre</th>
-                                    <th scope="col">Service</th>
-                                    <th scope="col">Edit</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($introService as $item)
-                                    <tr>
-                                      <td>{{$item->home}}</td>
-                                      <td>{{$item->title}}</td>
-                                      <td>{{$item->service}}</td>
-                                      <td>
-                                        <a href="/introervice/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
-                                      </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </section>
-                    
                     <section class="mt-5">
                         <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les services: </h1>
                         <table class="table">

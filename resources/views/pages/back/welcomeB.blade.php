@@ -29,32 +29,28 @@
         </tbody>
     </table>
   </section>  --}}
-    <section class="mt-5" >
-        <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les 3 Cards welcome : </h1>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Icon</th>
-                <th scope="col">Titre</th>
-                <th scope="col">Paragraphe</th>
-                <th scope="col">Edit</th>
-                {{-- <th scope="col">Edit</th> --}}
-              </tr>
-            </thead>
-            <tbody>
-                @foreach ($cardwelcome as $item)
-                <tr>
-                  <td><i class="{{$item->icone}}"></i></td>
-                  <td>{{$item->title}}</td>
-                  <td>{{$item->p}}</td>
-                  <td>
-                    <a href="/cardWelcome/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
-                  </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </section>
+  <section class="mt-5" >
+    <h1 class="m-5 text-center" style="color: #CBAACB">Modifier les titres de la page welcome : </h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Edit</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($titrewelcome as $item)
+            <tr>
+              <td>{{$item->title}}</td>
+              <td>
+                <a href="/titreswelcome/{{$item->id}}/edit" class="btn" style="background-color : #FFCCB6">Edit</a>
+              </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</section>
     
     <section class="mt-5">
       <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le texte de présentation : </h1>
@@ -161,10 +157,10 @@
           @endforeach
       </tbody>
   </table>
-  <a href="/team/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter une membre à l'équipe</a>
+  {{-- <a href="/team/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter une membre à l'équipe</a> --}}
 </section>
 
-<section class="mt-5">
+{{-- <section class="mt-5">
   <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le profil du CEO: </h1>
   <table class="table">
       <thead>
@@ -190,7 +186,7 @@
           @endforeach
       </tbody>
   </table>
-</section>
+</section> --}}
 
 
 

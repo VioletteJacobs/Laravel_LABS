@@ -274,11 +274,7 @@ return [
             'can' => 'isWebmaster',
             'submenu' => [
                 [
-                    'text' => 'Carousel',
-                    'url'  => '/welcomeB',
-                ],
-                [
-                    'text' => 'About Cards',
+                    'text' => 'Titres',
                     'url'  => '/welcomeB',
                 ],
                 [

@@ -16,7 +16,7 @@ class MapSeeder extends Seeder
     {
         DB::table("maps")->insert([
             [
-                "address" => " rue de la truelle 25",
+                "address" => " rue de la truelle 25  Illkirch-Graffenstaden, France",
             ]
         ]);
     }

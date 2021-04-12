@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function __construct(){
-        $this->middleware(["auth", "isWebmaster"]);
+        $this->middleware(["auth", "isWebmaster"])->only(["index", "validation", "destroy"]);
     }
     /**
      * Display a listing of the resource.
@@ -115,10 +115,10 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        $destroy = $comment;
-        $destroy->delete();
+        $delete = Comment::find($id);
+        $delete->delete();
         return redirect("/commentB");
     }
     

@@ -54,9 +54,9 @@
                                     <td>{{Auth::user()->roles->role}}</td>
                                     <td>{{Auth::user()->fonctions->fonction}}</td>
                                     <td>{{Auth::user()->email}}</td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="/users/{{Auth::user()->id}}/edit" class="btn" style="background-color: #FFCCB6">Edit</a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endauth
                         </tbody>

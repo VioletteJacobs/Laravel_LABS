@@ -16,12 +16,13 @@
               </tr>
             </thead>
             <tbody>
+
                 @foreach ($usersValidate as $item)
                 <tr>
                   <td>{{$item->firstname}}</td>
                   <td>{{$item->name}}</td>
                   <td>{{$item->email}}</td>
-                  <td><img src="{{asset('storage/img/'.$item->img)}}" alt="" height="150px" width="150px"></td>
+                  <td><img src="{{asset('storage/img/team/'.$item->photo)}}" alt="" height="150px" width="150px"></td>
                   <td>{{$item->fonctions->fonction}}</td>
                   @if ($item->role_id == 1)
                   @can('isAdmin')

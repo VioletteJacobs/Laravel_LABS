@@ -21,10 +21,13 @@ use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReadyController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\TitresserviceController;
+use App\Http\Controllers\TitreswelcomeController;
+use App\Http\Controllers\TitrewelcomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Str;
@@ -113,57 +116,17 @@ use Illuminate\Support\Facades\Route;
 Route::resource("/", WelcomeController::class);
 
 
-Route::get('/services', function () {
-    
-    $loader = Loader::all();
-    $nav = Navbar::all();
-    $logo = logo::first();
-
-
-    $titredeuxWelcome = Titreswelcome::where("id", 3)->get();
-
-    $titleTwoWelcome = Str::of($titredeuxWelcome[0]->title)->replace('(', '<span>');
-    $titleTwo = Str::of($titleTwoWelcome)->replace(')', '</span>');
-
-
-
-    $titredeuxService = Titresservice::where("id", 2)->get();
-
-    $titleTwoService = Str::of($titredeuxService[0]->title)->replace('(', '<span>');
-    $titleTwobis = Str::of($titleTwoService)->replace(')', '</span>');
-
-
-    $introService = Introservice::all();
-    $titresService =Titresservice::all();
-    $services = Service::orderBy("id", "DESC")->paginate(9);
-
-    $lastservices =  Service::orderBy("id", "desc")->limit(6)->get();
-
-    
-    $posts = DB::table("posts")->orderBy("id", "desc")->limit(3)->get();
-    
-
-    $formContact = Formcontact::first();
-    $subject= Subject::all();
-    $contactSection = Contactsection::all();
-    $address = Address::all();
-    $phone = Phone::all();
-    $email = Email::all();
-
-    $newsletter = Newsletter::first();
-    $footer = Footer::first();
-    return view('pages.front.services', compact("loader", "nav",  "logo", "introService", "titresService", "titleTwo", "titleTwobis", "services", "lastservices", "posts", "footer" , "contactSection", "address", "phone", "subject", "email","newsletter", "footer"));
-});
+Route::resource('/services', ServicesController::class);
 
 
 Route::get('/blog', function () {
     $loader = Loader::all();
     $nav = Navbar::all();
+    $intro = Introservice::all();
     
     $footer = Footer::first();
     $logo = logo::first();
 
-    $intro = Introblog::all();
 
     $category = Category::all();
     $tag = Tag::all();
@@ -187,8 +150,9 @@ Route::get('/post/{$id}', function () {
     $loader = Loader::all();
     $nav = Navbar::all();
     $logo = logo::first();
+    $intro = Introservice::all();
 
-    $intro = Introblog::all();
+  
 
     $category = Category::all();
     $tag = Tag::all();
@@ -206,6 +170,7 @@ Route::get('/contacter', function () {
     $loader = Loader::all();
     $nav = Navbar::all();
     $logo = logo::first();
+    $intro = Introservice::all();
 
     $contactSection = Contactsection::all();
     $address = Address::all();
@@ -216,7 +181,7 @@ Route::get('/contacter', function () {
     $map = Map::all();
 
     $footer = Footer::first();
-    return view('pages.front.contact', compact("loader", "nav", "logo", "footer" , "contactSection", "subject", "address", "phone", "email", "map", "footer"));
+    return view('pages.front.contact', compact("loader", "nav", "logo", "intro", "footer" , "contactSection", "subject", "address", "phone", "email", "map", "footer"));
 });
 
 
@@ -255,17 +220,7 @@ Route::get('/welcomeB', function () {
     return view('pages.back.welcomeB', compact("loader","nav", "carrousel", "cardwelcome", "carrousel","icon", "logo", "services", "about", "team", "ceo", "testimonials", "titrewelcome", "newsletter",  "footer"));
 });
 
-// Route::get("/contactB", function(){
-    
-//     $contactSection = Contactsection::all();
-//     // $formContact = Formcontact::first();
-//     $address = Address::all();
-//     $phone = Phone::all();
-//     $email = Email::all();
-    
-//     return view('pages.back.contactB', compact("contactSection", "address", "phone", "email"));
-    
-// });
+
 
 Route::get("/mainB", function(){
     $loader = Loader::first();
@@ -322,13 +277,14 @@ Route::resource("newsletter", NewsletterController::class);
 Route::resource("footer", FooterController::class);
 
 
+Route::resource('titreswelcome', TitreswelcomeController ::class);
 Route::resource('cardWelcome', CardwelcomeController::class);
 Route::resource("aboutwelcome", AboutwelcomeController::class);
 Route::resource("testimonial", TestimonialsController::class);
 Route::resource("carrousel", CarrouselController::class);
 Route::resource("team", TeamController::class);
-Route::resource('ceo', CeoController::class);
-Route::resource('ready', ReadyController::class);
+
+
 
 
 Route::resource("service", ServiceController::class);
@@ -377,3 +333,7 @@ Route::get("/filtertag/{id}", [PostController::class, "filtertag"]);
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('isValidate');
+
+Route::fallback(function () {
+    return redirect("/");
+});

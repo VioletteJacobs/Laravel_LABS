@@ -16,11 +16,11 @@ class CarrouselSeeder extends Seeder
     {
         DB::table("carrousels")->insert([
             [
-                "url" => "img/01.jpg",
+                "url" => "01.jpg",
                 "span" => "Get your freebie template now!",
             ],
             [
-                "url" => "img/02.jpg",
+                "url" => "02.jpg",
                 "span" => "Welcome in THE LAB! Have fun!",
             ],
             

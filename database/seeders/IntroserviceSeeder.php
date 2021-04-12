@@ -17,9 +17,8 @@ class IntroserviceSeeder extends Seeder
         DB::table("introservices")->insert([
             [
                 "home" =>"Home",
-                "title" => "Services",
                 "home_href" => "/",
-                "service" => "service",
+
 
             ],
         ]);

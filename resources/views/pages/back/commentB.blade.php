@@ -11,7 +11,6 @@
                 <th scope="col">Email : </th>
                 <th scope="col">Commentaire : </th>
                 <th scope="col">Titre du post : </th>
-                <th scope="col">Photo : </th>
               </tr>
             </thead>
             <tbody>
@@ -22,7 +21,6 @@
                   <td>{{$item->email}}</td>
                   <td>{{$item->content}}</td>
                   <td>{{$item->posts->title}}</td>
-                  <td><img src="{{asset('storage/img/'.$item->photo)}}" alt="" height="150px" width="150px"></td>
                   <td>{{$item->date}}</td>
                 </tr>
                 @endforeach
@@ -55,7 +53,7 @@
                       <form action="/commentB/{{$item->id}}" method="POST" >
                         @csrf
                         @method('DELETE')
-                        <button class="btn" style="background-color : #EB96AA">Ne pas valider</button>
+                        <button class="btn" type="submit" style="background-color : #EB96AA">Ne pas valider</button>
                     </form>
                   </td>
                   <td>

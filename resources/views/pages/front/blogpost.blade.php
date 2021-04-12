@@ -1,6 +1,4 @@
-@extends('template.main')
+@extends('template.second')
 @section('content')
-@include('partials.front.blog.intro')
 @include('partials.front.blog.post')
-{{-- @include('partials.front.all.newsletter') --}}
 @endsection

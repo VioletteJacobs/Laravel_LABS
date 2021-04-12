@@ -1,29 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Str;
+
 use App\Mail\Newsletter;
-use App\Models\Aboutwelcome;
 use App\Models\Address;
-use App\Models\Cardwelcome;
-use App\Models\Carrousel;
 use App\Models\Contactsection;
 use App\Models\Email;
 use App\Models\Footer;
+use App\Models\Formcontact;
+use App\Models\Introservice;
 use App\Models\Loader;
 use App\Models\logo;
 use App\Models\Navbar;
 use App\Models\Newsletter as ModelsNewsletter;
 use App\Models\Phone;
+use App\Models\Post;
 use App\Models\Service;
 use App\Models\Subject;
-use App\Models\Team;
-use App\Models\Testimonials;
+use App\Models\Titresservice;
 use App\Models\Titreswelcome;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class WelcomeController extends Controller
+class ServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,45 +31,42 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-    $loader = Loader::all();
-    $nav = Navbar::all();
-    $carrousel = Carrousel::all();
-    $cardwelcome = Cardwelcome::all();
-    $carrousel = Carrousel::all();
-    $logo = logo::first();
+        $loader = Loader::all();
+        $nav = Navbar::all();
+        $logo = logo::first();
+    
+    
+        $titresServices = Titresservice::all();
+        $titreUnService = greenTitle($titresServices[0]);
+        $titreDeuxService = greenTitle($titresServices[1]);
+    
+      
+    
+    
+    
 
-
-    $titrewelcome = Titreswelcome::all();
-
-
-    $titreUnWelcome = greenTitle($titrewelcome[0]);
-    $titreDeuxWelcome = greenTitle($titrewelcome[1]);
-    $titreTroisWelcome = greenTitle($titrewelcome[2]);
-    $titreQuatreWelcome = greenTitle($titrewelcome[3]);
-
-
-    $services = Service::all();
-
-    // $carrousel = Carrousel::all();
-    $about = Aboutwelcome::all();
-
-    $team = Team::all();
-
-
-
-    $testimonials = Testimonials::orderBy("id", "desc")->limit(6)->get();
-    $newsletter = ModelsNewsletter::first();
-
-    $subject= Subject::all();
-    $contactSection = Contactsection::all();
-    $address = Address::all();
-    $phone = Phone::all();
-    $email = Email::all();
-
-    $footer = Footer::first();
-
-
-    return view('welcome', compact("loader","nav", "carrousel", "cardwelcome", "carrousel", "logo", "services", "about", "team", "testimonials", "titrewelcome", "titreUnWelcome", "titreDeuxWelcome", "titreTroisWelcome", "titreQuatreWelcome", "newsletter", "contactSection", "subject", "address", "phone", "email", "footer"));
+    
+    
+        $intro = Introservice::all();
+        $titresService =Titresservice::all();
+        $services = Service::orderBy("id", "DESC")->paginate(9);
+    
+        $lastservices =  Service::orderBy("id", "desc")->limit(6)->get();
+    
+        
+        $posts = Post::orderBy("id", "desc")->limit(3)->get();
+        
+    
+        $formContact = Formcontact::first();
+        $subject= Subject::all();
+        $contactSection = Contactsection::all();
+        $address = Address::all();
+        $phone = Phone::all();
+        $email = Email::all();
+    
+        $newsletter = ModelsNewsletter::first();
+        $footer = Footer::first();
+        return view('pages.front.services', compact("loader", "nav",  "logo", "intro", "titreUnService", "titreDeuxService", "services", "lastservices", "posts", "footer" , "contactSection", "address", "phone", "subject", "email","newsletter", "footer"));
     }
 
     /**

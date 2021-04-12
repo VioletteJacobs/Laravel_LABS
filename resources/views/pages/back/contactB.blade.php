@@ -77,7 +77,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="/address/create" style="background-color: rgb(44, 230, 171)">Ajouter une adresse</a>
+        <a href="/address/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter une adresse</a>
     </section>
 
     <section class="mt-5" >
@@ -108,7 +108,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="/email/create" style="background-color: rgb(44, 230, 171)">Ajouter une adresse email :</a>
+        <a href="/email/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter une adresse email :</a>
     </section>
     
     <section class="mt-5" >
@@ -139,7 +139,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="/phone/create" style="background-color: rgb(44, 230, 171)">Ajouter une adresse email</a>
+        <a href="/phone/create" style="background-color: rgb(44, 230, 171)" class="p-2">Ajouter une adresse email</a>
     </section>
     {{-- <section class="mt-5" >
         <h1 class="m-5 text-center" style="color: #CBAACB">Modifier le formulaire de contact : </h1>

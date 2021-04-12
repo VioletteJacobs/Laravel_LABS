@@ -5,15 +5,15 @@
 		<div class="card-section">
 			<div class="container">
 				<div class="row">
-					@foreach ($cardwelcome as $item)
+					@foreach ($services->shuffle()->take(3) as $item)
 					<!-- single card -->
-					<div class="col-md-4 col-sm-6">
+					<div class="col-md-4 col-sm-6" height="352">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="{{$item->icone}}"></i>
+								<i class="{{$item->icons->name}}"></i>
 							</div>
 							<h2>{{$item->title}}</h2>
-							<p>{{$item->p}}</p>
+							<p >{{Str::limit($item->p, 50)}}</p>
 						</div>
 					</div>
 					@endforeach
@@ -27,7 +27,7 @@
 		<div class="about-contant">
 			<div class="container">
 				<div class="section-title">
-					<h2>{!!$titleOne!!}</h2>
+					<h2>{!!$titreUnWelcome!!}</h2>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
@@ -44,7 +44,7 @@
 				<div class="intro-video">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<img src="{{asset("storage/img/".$about[0]->img)}}" width="616px" height="332" alt="">
+							<img src="{{asset("storage/img/".$about[0]->img)}}" width="750" height="332" alt="">
 							<a href="{{$about[0]->video_href}}" class="video-popup">
 								<i class="fa fa-play"></i>
 							</a>

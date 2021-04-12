@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Mail;
 
 class NewsletterController extends Controller
 {
-    public function __construct(){
-        $this->middleware(["auth", "isWebmaster"]);
-    }
+    // public function __construct(){
+    //     $this->middleware(["auth", "isWebmaster"]);
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -42,14 +42,14 @@ class NewsletterController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-            "email" => 'required|email|unique:newsletters,email'
+            "email" => 'required|email|unique:sendnewsletters,email'
         ]);
 
         $newsletter = new ModelsSendnewsletter;
         $newsletter->email = $request->email;
         $newsletter->save();
         Mail::to($request->email)->send(new MailNewsletter($request));
-        return redirect()->back();
+        return redirect("/#newsletter")->with('message', "Vous êtes inscrites à notre newsletter! Merci !  ");
 
 
     }

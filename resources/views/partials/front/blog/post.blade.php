@@ -1,15 +1,9 @@
-	<!-- page section -->
-	<div class="page-section spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-sm-7 blog-posts">
-
 
 					<!-- Single Post -->
 					<div class="single-post">
 						<div class="post-thumbnail">
 
-							<img src="{{asset("storage/img/".$show->src)}}" alt="">
+							<img src="{{asset("storage/img/blog/".$show->src)}}" alt="">
 							<div class="post-date">
 								@if ($show->created_at == NULL)
 								<h2>12</h2>
@@ -24,13 +18,23 @@
 						<div class="post-content">
 							<h2 class="post-title">{{$show->title}}</h2>
 							<div class="post-meta">
-								<a href="">{{$show->categories->category}}</a>
+								<a  id="styleMeta" href="/filterc/{{$show->id}}">{{$show->categories->category}}</a>
+								@if (count($show->tags)>1)
 
-								@foreach ($show->tags as $tage)
-								<a href="">{{$tage->tag }}</a>
-								@endforeach
+									@foreach ($show->tags->random(2) as $tage)
+										@if ($loop->iteration == 1)
+										<a  id="styleMeta" href="/filtertag/{{$show->id}}">{{$tage->tag }}</a>
+										@else
+										<a  href="/filtertag/{{$show->id}}"> , {{$tage->tag }}</a>
+											
+										@endif
+									@endforeach
+										
+		
+									
+								@endif
 
-								<a href=""> {{$nbrcomments}} Comments</a>
+								<a id="styleMeta" href=""> {{$nbrcomments}} Comments</a>
 							</div>
 
 							<p>{!!$show->content!!}</p>  
@@ -112,15 +116,3 @@
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="col-md-4 col-sm-5 sidebar">
-
-					@include('partials.front.blog.search')
-					@include('partials.front.blog.category')
-					@include('partials.front.blog.tags')
-					
-				</div>
-			</div>
-		</div>
-	</div>

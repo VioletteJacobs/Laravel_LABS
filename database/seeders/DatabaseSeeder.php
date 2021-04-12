@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             LoaderSeeder::class,
             NavbarSeeder::class,
             FooterSeeder::class,
+            EmailcontactSeeder::class,
             NewsletterSeeder::class,
             IconSeeder::class,
 
@@ -44,11 +45,9 @@ class DatabaseSeeder extends Seeder
             AboutwelcomeSeeder::class,
             TestimonialsSeeder::class,
             TeamSeeder::class,
-            CEOSeeder::class,
-            ReadySeeder::class,
+
 
             // blade blog
-            IntroblogSeeder::class,
             TagSeeder::class,
             CategorySeeder::class,
             PostSeeder::class,
@@ -63,7 +62,6 @@ class DatabaseSeeder extends Seeder
 
 
             // blade contact
-            IntrocontactSeeder::class,
             MapSeeder::class,
 
         ]);

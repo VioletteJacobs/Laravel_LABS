@@ -49,7 +49,7 @@ class TestimonialsController extends Controller
         $newEntry = new Testimonials;
         $newEntry->p = $request->p;
         $newEntry->name = $request->name;
-        Storage::put("public.img/avatar", $request->file("photo"));
+        Storage::put("public/img/avatar", $request->file("photo"));
         $newEntry->photo = $request->file("photo")->hashName();
         $newEntry->firstname = $request->firstname;
         $newEntry->fonction = $request->fonction;

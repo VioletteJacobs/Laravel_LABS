@@ -47,7 +47,7 @@ class TeamController extends Controller
 
         ]);
         $update = new Team;
-        Storage::delete("public/img/team/".$update->photo);
+        // Storage::delete("public/img/team/".$update->photo);
         Storage::put("public/img/team", $request->photo);
         $update->photo = $request->photo;
         $update->name = $request->name;

@@ -60,7 +60,8 @@ class TitreswelcomeController extends Controller
      */
     public function edit(Titreswelcome $titreswelcome)
     {
-        //
+        $edit = $titreswelcome;
+        return view ("pages.back.edit.welcome.editTitres", compact("edit"));
     }
 
     /**
@@ -72,7 +73,14 @@ class TitreswelcomeController extends Controller
      */
     public function update(Request $request, Titreswelcome $titreswelcome)
     {
-        //
+        $validation = $request->validate([
+		    "title" => 'required |min:1',
+
+        ]);
+        $update = $titreswelcome;
+        $update->title = $request->title;
+        $update->save();
+        return redirect("/welcomeB");
     }
 
     /**

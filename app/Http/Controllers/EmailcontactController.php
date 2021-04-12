@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\logo;
+use App\Models\Emailcontact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Image;
 
-class LogoController extends Controller
+class EmailcontactController extends Controller
 {
-    public function __construct(){
-        $this->middleware(["auth", "isWebmaster"]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -46,10 +41,10 @@ class LogoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\logo  $logo
+     * @param  \App\Models\Emailcontact  $emailcontact
      * @return \Illuminate\Http\Response
      */
-    public function show(logo $logo)
+    public function show(Emailcontact $emailcontact)
     {
         //
     }
@@ -57,47 +52,33 @@ class LogoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\logo  $logo
+     * @param  \App\Models\Emailcontact  $emailcontact
      * @return \Illuminate\Http\Response
      */
-    public function edit(logo $logo)
+    public function edit(Emailcontact $emailcontact)
     {
-        $edit = $logo;
-        return view("pages.back.edit.all.editLogo", compact("edit"));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\logo  $logo
+     * @param  \App\Models\Emailcontact  $emailcontact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, logo $logo)
+    public function update(Request $request, Emailcontact $emailcontact)
     {
-        $validation = $request->validate([
-            "url" => 'required',
-
-        ]);
-        $update = $logo;
-        // Storage::delete("public/img/".$update->url);
-        Storage::put("public/img", $request->url);
-        $update->url = $request->file("url")->hashName();
-        $img = Image::make('storage/img/'.$update->url)
-        ->resize(100,80);
-        $img->save('img/logo-xs/xs-logo.jpeg');
-
-        $update->save();
-        return redirect("/mainB");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\logo  $logo
+     * @param  \App\Models\Emailcontact  $emailcontact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(logo $logo)
+    public function destroy(Emailcontact $emailcontact)
     {
         //
     }

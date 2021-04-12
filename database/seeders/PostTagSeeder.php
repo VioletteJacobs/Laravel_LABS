@@ -28,6 +28,14 @@ class PostTagSeeder extends Seeder
                 "tag_id" => 3
             ],
             [
+                "post_id" => 1,
+                "tag_id" => 4
+            ],
+            [
+                "post_id" => 2,
+                "tag_id" => 3
+            ],
+            [
                 "post_id" => 2,
                 "tag_id" => 4
             ],

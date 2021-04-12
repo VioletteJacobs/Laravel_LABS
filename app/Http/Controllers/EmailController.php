@@ -81,7 +81,7 @@ class EmailController extends Controller
     public function update(Request $request, Email $email)
     {
         $validation = $request->validate([
-            "address" => 'required|min:2|max:50',
+            "email" => 'required|min:2|max:50',
 
         ]);
         $update = $email;

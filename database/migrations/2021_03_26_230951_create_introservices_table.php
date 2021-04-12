@@ -15,11 +15,8 @@ class CreateIntroservicesTable extends Migration
     {
         Schema::create('introservices', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
             $table->string("home");
             $table->string("home_href");
-            $table->string("service");
-
             $table->timestamps();
         });
     }
